@@ -238,16 +238,15 @@ root_agent = Agent(
        
     2. **Synthesize Factor Vectors for Each Identified Area**:
        For each identified business area, extract or synthesize the four critical factor vectors:
-       - **Component Area**: The specific physical component system, machinery, or sub-assembly targeted (e.g. 'Lithography & Mask Alignment Systems', 'Cleanroom Air Handling & HVAC Internals').
-       - **Identify component area as granular as possible. Granularity should depend on the areas that individual businesses are operating in [Example, braking system for various categories of vehicles like EV, ICE, Hybrid etc. and the specific braking systems for each], solar module for EV, ICE, Hybrid etc. and the specific solar modules for each, solar panels for renewable energy business and the specific solar panels for each, etc. The component area should be specific to the industry or technology described]**
-       - **Industry Sector**: The parent macro sector category (e.g. 'Semiconductor Fabrication / High-Tech Manufacturing').
-       - **Macroeconomic Factors (Systemic)**: Core global economic variables, sovereign mandates, capital subsidies, tariff structures, or global raw material shortages (e.g. 'Sovereign financial incentives (PLI schemes), international raw material tariff structures').
-       - **Microeconomic Factors (Entity-Specific)**: Local physical wear, specialized engineer talent shortages, extreme cleanroom standard maintenance costs, or high R&D obsolescence risks (e.g. 'High upfront CapEx for lithography tooling, extreme filtration and contamination controls').
+       - **Component Area**: The specific physical component system, machinery, or sub-assembly targeted. Identify component area as granular as possible.
+       - **Industry Sector**: The parent macro sector category.
+       - **Macroeconomic Factors (Systemic)**: Core global economic variables, sovereign mandates, capital subsidies, tariff structures, or global raw material shortages.
+       - **Microeconomic Factors (Entity-Specific)**: Local physical wear, specialized engineer talent shortages, extreme cleanroom standard maintenance costs, or high R&D obsolescence risks.
 
     3. **Generate Custom Output Filename & Register**:
-       - Programmatically determine a highly appropriate, descriptive, and customized filename for the registry HTML page based on the user's input and content generated (e.g., if the input is about semiconductors, generate 'semiconductor_registry.html'; if it is about smart grids, generate 'smart_grid_registry.html').
+       - Programmatically determine a highly appropriate, descriptive, and customized filename for the registry HTML page based on the user's input and content generated (e.g. 'semiconductor_registry.html').
        - The filename must be all lowercase, alphanumeric with underscores, and always end in '.html'.
-       - Programmatically determine an appropriate, highly professional dynamic title (e.g. 'India Semiconductor Manufacturing Registry') and a detailed B2B subtitle (e.g. 'Orchestrated registry of fabrication, packaging, equipment, and supply-chain vectors') for the page.
+       - Programmatically determine an appropriate, highly professional dynamic title (e.g. 'India Semiconductor Manufacturing Registry') and a detailed B2B subtitle for the page.
        - For EACH identified business area, call the `register_business_area` tool, passing in its synthesized vectors, the dynamically determined custom `filename`, and the custom `page_title` and `page_subtitle` parameters (to append if the file already exists, or create it if not).
        - Write the file in /Users/kishore/myprojects/vectranyx/reports/marketresearch/businessareas folder mandatorily.
 
@@ -262,6 +261,3 @@ root_agent = Agent(
         register_business_area
     ]
 )
-
-
-

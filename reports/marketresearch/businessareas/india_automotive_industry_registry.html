@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Automotive Industry B2B Registry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: hsl(200, 20%, 5%);
+            --bg-grid: hsl(200, 20%, 8%);
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --card-border: rgba(255, 255, 255, 0.07);
+            --text-primary: hsl(210, 40%, 98%);
+            --text-secondary: hsl(215, 25%, 72%);
+            --text-muted: hsl(215, 16%, 50%);
+            --accent-cyan: hsl(190, 80%, 45%);
+            --accent-mist: hsl(185, 45%, 65%);
+            --primary-gradient: linear-gradient(135deg, hsl(185, 45%, 65%), hsl(190, 80%, 45%));
+            --font-outfit: 'Outfit', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-inter);
+            line-height: 1.6;
+            padding: 3rem 1.5rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.07) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(34, 211, 238, 0.03) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--accent-mist);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-family: var(--font-outfit);
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+        .registry-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th {
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+        }
+        td {
+            padding: 1.2rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            font-weight: 300;
+        }
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="badge">Orchestrated Registry</span>
+            <h1>India Automotive Industry B2B Registry</h1>
+            <p class="subtitle">Key Business Areas, Components, Macroeconomic Drivers, and Microeconomic Risks in the Indian Automotive Sector.</p>
+        </header>
+        <div class="registry-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Component Area</th>
+                        <th style="width: 20%;">Industry Sector</th>
+                        <th style="width: 27%;">Macroeconomic Factors (Systemic)</th>
+                        <th style="width: 28%;">Microeconomic Factors (Entity-Specific)</th>
+                    </tr>
+                </thead>
+                <tbody id="registry-body">
+                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">Multi-segment automotive components (e.g., Engine & Powertrain components, Electrical & Electronic systems, EV battery enclosures & thermal management, Chassis & Suspension parts, Rubber & Plastic moulded ancillaries, Tyres)</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Automotive Manufacturing & Ancillary Industry / Electric Vehicle Ecosystem</td>
+                        <td>Government Production Linked Incentive (PLI) schemes for auto and auto components, FAME-II subsidies for EVs, evolving emission norms (e.g., BS6), global supply chain disruptions (e.g., semiconductor shortages), raw material price volatility (e.g., steel, rare earth metals for EV batteries), import duties on certain components.</td>
+                        <td>High R&D costs for developing advanced materials and EV-specific components, skilled labor shortages (especially for EV technologies), quality control and homologation costs, intense competition from international players, high capital expenditure for plant modernization and new technology adoption.</td>
+                    </tr>
+                                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">EV Charging Station Hardware (AC/DC chargers, connectors, power electronics), Charging Management Systems (CMS) software, Grid integration solutions, Ancillary electrical equipment (transformers, switchgear).</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Electric Vehicle Infrastructure Development / Energy & Smart Mobility Solutions</td>
+                        <td>Government mandates for EV adoption targets, subsidies for charging infrastructure deployment, evolving charging standards (e.g., CCS, CHAdeMO, Bharat EV Charger), electricity tariff policies for charging, land availability and permitting regulations.</td>
+                        <td>High upfront investment for high-power charging stations, interoperability challenges between different charger brands and vehicle models, grid capacity limitations and upgrade costs, cybersecurity risks for networked charging stations, rapid technological obsolescence of charging technology, need for robust maintenance and service networks.</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">Embedded software for ECUs & ADAS, Infotainment systems, Telematics & Connectivity platforms, Manufacturing Execution Systems (MES), Supply Chain Management (SCM) software, Dealership Management Systems (DMS), IoT solutions for fleet management, Data analytics & AI for predictive maintenance.</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Automotive Technology / IT & Software Services</td>
+                        <td>Digital India initiatives, increasing focus on cyber-physical systems and Industry 4.0, data localization policies, intellectual property rights protection, global demand for connected and autonomous vehicles driving software innovation.</td>
+                        <td>Shortage of specialized automotive software engineers, high R&D expenditure for developing cutting-edge AI/ML algorithms and cybersecurity features, rapid technological shifts requiring continuous skill upgrades, integration complexities with diverse hardware platforms, compliance with automotive safety standards (e.g., ISO 26262), data privacy concerns.</td>
+                    </tr>
+</tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

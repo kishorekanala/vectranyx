@@ -1,0 +1,48 @@
+In Automotive industry in India, there are businesses (startups and established companies) that manufacture and sell automotive components for two wheelers, three wheelers, passenger vehicles and commercial vehicles. 
+There are following businesses
+- auto ancillaries, 
+- auto electricals, 
+- auto electronics, 
+- auto parts, 
+- auto repairs, 
+- auto trading, 
+- auto trimming, 
+- auto tuning, 
+- auto parts trading, 
+- auto components trading, 
+- auto electricals trading, 
+- auto electronics trading, 
+- auto parts repairing, 
+- auto trimming repairing, 
+- auto tuning repairing, 
+- auto parts trading repairing, 
+- auto components trading repairing, 
+- auto electricals trading repairing,
+- EV components manufacturers, 
+- EV components traders, 
+- EV parts manufacturers, 
+- EV parts traders, 
+- EV components repairing, 
+- EV parts repairing, 
+- EV ancillaries manufacturers, 
+- EV ancillaries traders, 
+- EV ancillaries repairing.
+- Auto consulting businesses that help businesses with product development, business development, marketing, sales, finance, operations, hr, legal, etc. These are startups and established companies.
+- Tyre manufacturers, 
+- tyre repairers, 
+- tyre traders, 
+- tyre ancillaries manufacturers, 
+- tyre ancillaries traders, 
+- tyre ancillaries repairing.
+- Auto Insurance companies and Auto Insurance brokers.
+- Auto Loan companies and Auto Loan brokers.
+- Auto Garages and Auto Repair shops.
+- EV Charging stations manufacturers.
+- EV Charging stations traders.
+- EV Charging stations repairing.
+- EV Charging stations ancillaries manufacturers.
+- EV Charging stations ancillaries traders.
+- EV Charging stations ancillaries repairing.
+- Software solutions for automotive industry.
+- IT services for automotive industry.
+- 

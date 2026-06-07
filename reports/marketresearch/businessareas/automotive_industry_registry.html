@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Automotive Industry Business Areas Registry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: hsl(200, 20%, 5%);
+            --bg-grid: hsl(200, 20%, 8%);
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --card-border: rgba(255, 255, 255, 0.07);
+            --text-primary: hsl(210, 40%, 98%);
+            --text-secondary: hsl(215, 25%, 72%);
+            --text-muted: hsl(215, 16%, 50%);
+            --accent-cyan: hsl(190, 80%, 45%);
+            --accent-mist: hsl(185, 45%, 65%);
+            --primary-gradient: linear-gradient(135deg, hsl(185, 45%, 65%), hsl(190, 80%, 45%));
+            --font-outfit: 'Outfit', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-inter);
+            line-height: 1.6;
+            padding: 3rem 1.5rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.07) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(34, 211, 238, 0.03) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--accent-mist);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-family: var(--font-outfit);
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+        .registry-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th {
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+        }
+        td {
+            padding: 1.2rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            font-weight: 300;
+        }
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="badge">Orchestrated Registry</span>
+            <h1>India Automotive Industry Business Areas Registry</h1>
+            <p class="subtitle">Orchestrated registry of manufacturing, components, services, and technology vectors within the Indian Automotive Sector</p>
+        </header>
+        <div class="registry-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Component Area</th>
+                        <th style="width: 20%;">Industry Sector</th>
+                        <th style="width: 27%;">Macroeconomic Factors (Systemic)</th>
+                        <th style="width: 28%;">Microeconomic Factors (Entity-Specific)</th>
+                    </tr>
+                </thead>
+                <tbody id="registry-body">
+                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">Diverse Automotive Components (ICE: engine parts, braking systems, lighting, infotainment)</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Automotive Manufacturing & Supply Chain (ICE Vehicles)</td>
+                        <td>Government Production Linked Incentive (PLI) schemes, import tariffs on raw materials, fluctuating fuel prices impacting vehicle demand, global supply chain disruptions.</td>
+                        <td>High R&D costs for new component development, skilled labor availability for precision manufacturing, intense competition, inventory management challenges, stringent quality control and defect rate targets.</td>
+                    </tr>
+                                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">EV Components (batteries, electric motors, power electronics, charging inlets)</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Electric Vehicle (EV) Manufacturing & Supply Chain</td>
+                        <td>FAME II subsidies for EV adoption, government push for EV infrastructure, international agreements on battery raw material sourcing, rising electricity costs.</td>
+                        <td>Rapid technological obsolescence in battery technology, significant capital investment for specialized EV component production lines, reliance on imported critical minerals, talent shortage in EV engineering.</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">Tyres for various vehicle types and Tyre Ancillaries (rubber compounds, steel belts, molds)</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Automotive Ancillary Manufacturing / Rubber & Plastics Industry</td>
+                        <td>Volatility in natural rubber prices, import duties on synthetic rubber, infrastructure development leading to higher vehicle usage, environmental regulations on tyre disposal.</td>
+                        <td>Energy-intensive manufacturing processes, skilled labor for curing and molding, R&D for advanced tread patterns and materials, intense competition from international brands.</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">Aftermarket Vehicle Repair & Maintenance Services (for ICE & EV, including parts, trimming, tuning, tyre repair)</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Automotive Services / Aftermarket</td>
+                        <td>Economic growth influencing consumer spending on vehicle maintenance, road safety regulations, GST rates on services and spare parts, insurance claim processing policies.</td>
+                        <td>Shortage of certified mechanics (especially for EVs), cost of specialized diagnostic tools, managing diverse spare parts inventory, maintaining customer trust and quality of service, competition from organized vs. unorganized sectors.</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">EV Charging Stations (AC/DC chargers) and Ancillaries (cables, connectors, power management systems)</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Electric Vehicle (EV) Infrastructure / Renewable Energy Support</td>
+                        <td>Government incentives for EV charging network expansion, power grid stability and capacity, land availability for charging stations, electricity tariffs for commercial charging.</td>
+                        <td>High upfront capital expenditure for fast chargers, interoperability challenges with different EV models, cybersecurity risks for networked chargers, maintenance costs in public environments.</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">Automotive Software (infotainment, ADAS, telematics) and IT Services (cloud, analytics, cybersecurity)</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Automotive Technology / IT Services</td>
+                        <td>Digital India initiatives, data privacy regulations, availability of high-speed internet infrastructure, government support for tech startups.</td>
+                        <td>Rapid technological evolution requiring continuous R&D, shortage of specialized automotive software engineers, intellectual property protection, rigorous testing and validation for safety-critical software.</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500; color: var(--text-primary);">Consulting & Advisory (product/business development, marketing, finance, HR, legal) for Automotive Industry</td>
+                        <td style="color: var(--accent-cyan); font-weight: 500;">Professional Services / Automotive Consulting</td>
+                        <td>Overall health of the automotive industry, foreign direct investment policies, ease of doing business, government policy changes impacting industry structure.</td>
+                        <td>Need for highly specialized domain expertise, talent acquisition and retention for consultants, maintaining client confidentiality, strong network and reputation building, project-based revenue volatility.</td>
+                    </tr>
+</tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B Market Research: Tyre Manufacturing and Rubber Products</title>
+    <style>
+        /* Curated HSL Design Tokens (Sleek Mist Cyan Theme) */
+        :root {
+            --bg-dark: hsl(185, 20%, 5%);
+            --bg-grid: hsl(185, 20%, 8%);
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --card-border: rgba(255, 255, 255, 0.07);
+            --card-border-hover: rgba(6, 182, 212, 0.35);
+            --text-primary: hsl(210, 40%, 98%);
+            --text-secondary: hsl(215, 25%, 72%);
+            --text-muted: hsl(215, 16%, 50%);
+            
+            --accent-mist: hsl(185, 45%, 65%);
+            --accent-cyan: hsl(190, 80%, 45%);
+            --accent-amber: hsl(40, 92%, 52%);
+            
+            --primary-gradient: linear-gradient(135deg, hsl(185, 45%, 65%), hsl(190, 80%, 45%));
+            --glow-mist: rgba(6, 182, 212, 0.15);
+            --glow-cyan: rgba(34, 211, 238, 0.12);
+            --glow-amber: rgba(245, 158, 11, 0.12);
+            
+            --font-outfit: 'Outfit', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-inter);
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.07) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(34, 211, 238, 0.03) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Layout */
+        header {
+            margin-bottom: 3.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--accent-mist);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: var(--font-outfit);
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            font-weight: 300;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Overview Section */
+        .overview-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .overview-title {
+            font-family: var(--font-outfit);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overview-title::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        /* Responsive Driver Grid (3 Cards) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* High-End Glassmorphic Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Card-Specific Accents */
+        .card-mandates::before { background: var(--accent-mist); }
+        .card-mandates { box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 0 20px var(--glow-mist); }
+
+        .card-wear::before { background: var(--accent-cyan); }
+        .card-wear { box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 0 20px var(--glow-cyan); }
+
+        .card-auxiliary::before { background: var(--accent-amber); }
+        .card-auxiliary { box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 0 20px var(--glow-amber); }
+
+        /* Card Hover States with Subtle Scale and Border Glow */
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Card Header & Badges */
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card-badge {
+            font-family: var(--font-outfit);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-mist { background: rgba(6, 182, 212, 0.1); color: var(--accent-mist); border: 1px solid rgba(6, 182, 212, 0.2); }
+        .badge-cyan { background: rgba(34, 211, 238, 0.1); color: var(--accent-cyan); border: 1px solid rgba(34, 211, 238, 0.2); }
+        .badge-amber { background: rgba(245, 158, 11, 0.1); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.2); }
+
+        /* Card Typography */
+        .card-title {
+            font-family: var(--font-outfit);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.2px;
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Strategic Highlights */
+        .strategic-highlight {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .strategic-title {
+            font-family: var(--font-outfit);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .strategic-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Financial Advisory Footer Block */
+        .advisory-block {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5));
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .advisory-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--accent-mist);
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0.35rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1.25rem;
+        }
+
+        .advisory-title {
+            font-family: var(--font-outfit);
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .advisory-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 300;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            body { padding: 1.5rem 1rem; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="category-badge">Tyre Manufacturing / Rubber Products</span>
+            <h1>Tyre Manufacturing and Rubber Products</h1>
+            <p class="subtitle">Navigating a capital-intensive industry defined by commodity price volatility, energy-heavy processes, and the R&D race for sustainable and high-performance tyres.</p>
+        </header>
+
+        <section class="overview-section">
+            <h2 class="overview-title">Business Area Context</h2>
+            <p class="overview-text">
+                The tyre manufacturing sector is a classic heavy industry, fundamentally shaped by the interplay of global commodity markets and intensive manufacturing processes. Systemic factors, including the high volatility of natural and synthetic rubber prices and government actions like anti-dumping duties, directly impact input costs and profitability. This is set against a backdrop of evolving environmental regulations for waste and new performance standards for rolling resistance and grip. For manufacturers, the primary microeconomic drivers are the extremely energy-intensive nature of the curing process and the intense capital expenditure required for R&D to develop advanced, specialized tyres (e.g., for EVs) and more sustainable materials to remain competitive against a backdrop of fierce international and domestic competition.
+            </p>
+        </section>
+
+        <main class="grid">
+            <div class="card card-mandates">
+                <div class="card-header">
+                    <span class="card-icon">🏛️</span>
+                    <span class="card-badge badge-mist">Systemic Catalyst</span>
+                </div>
+                <h3 class="card-title">Commodity Volatility & Trade Policy</h3>
+                <p class="card-desc">
+                    The financial health of the tyre industry is inextricably linked to the global price of rubber. Natural rubber prices are notoriously volatile, and synthetic rubber is subject to trade policies like anti-dumping duties. This creates a challenging environment for cost control and financial planning, forcing companies to engage in sophisticated hedging and procurement strategies.
+                </p>
+                <div class="strategic-highlight">
+                    <h4 class="strategic-title">⚡ CapEx Implication</h4>
+                    <p class="strategic-desc">Requires significant allocation of working capital to maintain large inventories as a buffer against price shocks. Drives investment in procurement and supply chain management systems to optimize sourcing and manage commodity risk.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card card-wear">
+                <div class="card-header">
+                    <span class="card-icon">⚙️</span>
+                    <span class="card-badge badge-cyan">Physical Load</span>
+                </div>
+                <h3 class="card-title">Energy-Intensive Manufacturing</h3>
+                <p class="card-desc">
+                    The core manufacturing process, particularly the high-temperature, high-pressure curing of tyres, is one of the most energy-intensive operations in the automotive supply chain. This creates a direct and significant exposure to fluctuations in electricity and natural gas prices, making energy efficiency a critical driver of profitability and a key focus for capital investment.
+                </p>
+                <div class="strategic-highlight">
+                    <h4 class="strategic-title">⚡ CapEx Implication</h4>
+                    <p class="strategic-desc">Justifies major capital expenditure on modern, energy-efficient curing presses, heat recovery systems, and on-site renewable energy generation (e.g., solar, co-generation plants) to reduce grid dependency and long-term operating costs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card card-auxiliary">
+                <div class="card-header">
+                    <span class="card-icon">⚡</span>
+                    <span class="card-badge badge-amber">Operating Penalty</span>
+                </div>
+                <h3 class="card-title">R&D Race & Environmental Compliance</h3>
+                <p class="card-desc">
+                    Intense competition necessitates a continuous and costly R&D effort to develop tyres with improved performance, such as lower rolling resistance for EVs, better wet grip, and longer life. This is compounded by growing pressure from environmental regulations, which demand investment in sustainable materials and processes for tyre disposal and recycling.
+                </p>
+                <div class="strategic-highlight">
+                    <h4 class="strategic-title">⚡ CapEx Implication</h4>
+                    <p class="strategic-desc">Requires sustained, significant capital allocation to R&D centers, advanced material testing laboratories, and pilot plants. Increasing CapEx is also directed towards developing circular economy solutions, including end-of-life tyre processing and devulcanization technologies.
+                    </p>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="advisory-block">
+            <span class="advisory-badge">Strategic Takeaway</span>
+            <h2 class="advisory-title">B2B Vendor & Investment Summary</h2>
+            <p class="advisory-text">
+                Manufacturers who succeed are those that can effectively manage commodity price risk, invest heavily in energy efficiency, and lead in the R&D of specialized, high-performance, and sustainable tyres. The capital-intensive nature of the business favors large, well-capitalized players with strong balance sheets. Financing is typically asset-backed, dominated by large, syndicated working capital loans for inventory and term loans from commercial banking consortiums for capacity expansion and modernization projects.
+            </p>
+        </footer>
+        
+        <section class="lending-section" style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--card-border); border-radius: 20px; padding: 2.2rem; margin-top: 3rem; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
+            <h3 style="font-family: var(--font-outfit); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                🏦 Active Institutional Lenders & Financiers
+            </h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 300; line-height: 1.6; margin-bottom: 1.5rem;">
+                The following leading financial institutions, developmental agencies, and commercial banks actively provide project debt, credit limits, and working capital solutions to Tier-1/Tier-2 suppliers and asset operators in the <strong>Tyre Manufacturing and Rubber Products</strong> space.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <!-- Card 1: Key Lenders & Market Shares -->
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                    <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+                        🏢 Primary Sources & Market Share
+                    </h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.5rem;">
+                            <strong style="color: var(--text-primary); font-size: 0.9rem;">State Bank of India</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                            <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                        </li>
+                        <li style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.5rem;">
+                            <strong style="color: var(--text-primary); font-size: 0.9rem;">HSBC</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                            <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                        </li>
+                        <li style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.5rem;">
+                            <strong style="color: var(--text-primary); font-size: 0.9rem;">Citibank</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                            <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong style="color: var(--text-primary); font-size: 0.9rem;">Standard Chartered</strong><br>
+                            <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                            <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Card 2: Preferred Products -->
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                    <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                        💼 Financing Instruments
+                    </h4>
+                    <ul style="list-style: none; padding: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                        <li style="margin-bottom: 0.5rem;">• <strong>Project Debt Consortia:</strong> Non-recourse debt structured against long-term off-take agreements.</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Structured Trade Credit:</strong> Working capital and supply chain financing for critical components.</li>
+                        <li>• <strong>Guarantees & LC:</strong> Letters of Credit and bank guarantees to secure equipment deliveries from global OEMs.</li>
+                    </ul>
+                </div>
+                <!-- Card 3: Key Underwriting Benchmarks -->
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                    <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                        📊 Underwriting Benchmarks
+                    </h4>
+                    <ul style="list-style: none; padding: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                        <li style="margin-bottom: 0.5rem;">• <strong>Min. DSCR:</strong> N/A (Transaction-Specific / Underwriter Discretionary)</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Cash Escrow:</strong> Compulsory routing of off-taker collections with DSRA reserves.</li>
+                        <li>• <strong>Security Package:</strong> Charge on immovable property, plant equipment, and stock reserves.</li>
+                    </ul>
+                </div>
+                <!-- Card 4: Quantitative Capital Parameters -->
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                    <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                        📈 Quantitative Capital Parameters
+                    </h4>
+                    <ul style="list-style: none; padding: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                        <li style="margin-bottom: 0.5rem;">• <strong>Interest Rate:</strong> N/A (Subject to Benchmark Rate & Credit Risk Assessment)</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Standard Facility Size:</strong> N/A (Case-by-Case / Project Scale Dependent)</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Target Debt-to-Equity:</strong> N/A (Capital Structure & Credit Rating Dependent)</li>
+                        <li>• <strong>Loan Maturity Tenure:</strong> N/A (Facility & Asset Life Cycle Dependent)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="vector-registry" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; backdrop-filter: blur(10px);">
+            <h3 style="font-family: var(--font-outfit); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                📋 B2B Intelligence Vector Registry
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Component Area</span>
+                    <strong style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary);">Radial and bias tyres for 2W, 3W, PV, CV, and OTR vehicles; specialized tyres for EVs; tyre tubes, flaps, and retreading materials.</strong>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Industry Sector</span>
+                    <strong style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary);">Tyre Manufacturing / Rubber Products</strong>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Macroeconomic Factors (Systemic)</span>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.4; font-weight: 300;">Rubber (natural and synthetic) price volatility, anti-dumping duties, government regulations on tyre standards (e.g., rolling resistance, wet grip), infrastructure development impacting vehicle sales and logistics.</p>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Microeconomic Factors (Entity-Specific)</span>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.4; font-weight: 300;">Energy-intensive manufacturing processes, environmental regulations on waste disposal and pollution control, intense competition from international and domestic players, R&D for sustainable materials, complexities in distribution networks.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="glossary-section" style="background: rgba(15, 23, 42, 0.45); border: 1px solid var(--card-border); border-radius: 20px; padding: 2.2rem; margin-top: 3rem; backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);">
+            <h3 style="font-family: var(--font-outfit); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                📚 B2B Glossary & Factor Breakdown
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+                
+                <!-- Macroeconomic Terms Explained -->
+                <div>
+                    <h4 style="font-family: var(--font-outfit); font-size: 1.1rem; color: var(--accent-mist); margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Systemic Macroeconomic Terms
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                            <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Anti-Dumping Duties</strong>
+                            <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">Tariffs imposed by a government on imported goods that it believes are priced below fair market value, designed to protect domestic industries from predatory pricing.</span>
+                        </li>
+                        <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                            <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Rolling Resistance</strong>
+                            <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">The energy that a tyre consumes while rolling under a load. Lower rolling resistance improves fuel efficiency and is a key R&D target, especially for EV tyres.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Microeconomic Terms Explained -->
+                <div>
+                    <h4 style="font-family: var(--font-outfit); font-size: 1.1rem; color: var(--accent-mist); margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Entity-Specific Microeconomic Terms
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                            <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Energy-Intensive Processes</strong>
+                            <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">Manufacturing operations that consume a large amount of energy per unit of production. The curing process in tyre manufacturing is a prime example, making the business highly sensitive to energy prices.</span>
+                        </li>
+                        <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                            <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Distribution Networks</strong>
+                            <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">The complex system of warehouses, wholesalers, and retailers required to get finished tyres from the factory to the end consumer. Managing this network efficiently is a major operational challenge.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

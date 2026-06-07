@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Research: Automotive Consulting & Advisory</title>
+    <style>
+        /* Curated HSL Design Tokens (Sleek Mist Cyan Theme) */
+        :root {
+            --bg-dark: hsl(185, 20%, 5%);
+            --bg-grid: hsl(185, 20%, 8%);
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --card-border: rgba(255, 255, 255, 0.07);
+            --card-border-hover: rgba(6, 182, 212, 0.35);
+            --text-primary: hsl(210, 40%, 98%);
+            --text-secondary: hsl(215, 25%, 72%);
+            --text-muted: hsl(215, 16%, 50%);
+            
+            --accent-mist: hsl(185, 45%, 65%);
+            --accent-cyan: hsl(190, 80%, 45%);
+            --accent-amber: hsl(40, 92%, 52%);
+            
+            --primary-gradient: linear-gradient(135deg, hsl(185, 45%, 65%), hsl(190, 80%, 45%));
+            --glow-mist: rgba(6, 182, 212, 0.15);
+            --glow-cyan: rgba(34, 211, 238, 0.12);
+            --glow-amber: rgba(245, 158, 11, 0.12);
+            
+            --font-outfit: 'Outfit', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-inter);
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.07) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(34, 211, 238, 0.03) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Layout */
+        header {
+            margin-bottom: 3.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--accent-mist);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: var(--font-outfit);
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            font-weight: 300;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Overview Section */
+        .overview-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .overview-title {
+            font-family: var(--font-outfit);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overview-title::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        /* Responsive Driver Grid (3 Cards) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* High-End Glassmorphic Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Card-Specific Accents */
+        .card-mandates::before { background: var(--accent-mist); }
+        .card-mandates { box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 0 20px var(--glow-mist); }
+
+        .card-wear::before { background: var(--accent-cyan); }
+        .card-wear { box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 0 20px var(--glow-cyan); }
+
+        .card-auxiliary::before { background: var(--accent-amber); }
+        .card-auxiliary { box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 0 20px var(--glow-amber); }
+
+        /* Card Hover States with Subtle Scale and Border Glow */
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Card Header & Badges */
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card-badge {
+            font-family: var(--font-outfit);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-mist { background: rgba(6, 182, 212, 0.1); color: var(--accent-mist); border: 1px solid rgba(6, 182, 212, 0.2); }
+        .badge-cyan { background: rgba(34, 211, 238, 0.1); color: var(--accent-cyan); border: 1px solid rgba(34, 211, 238, 0.2); }
+        .badge-amber { background: rgba(245, 158, 11, 0.1); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.2); }
+
+        /* Card Typography */
+        .card-title {
+            font-family: var(--font-outfit);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.2px;
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Strategic Highlights */
+        .strategic-highlight {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .strategic-title {
+            font-family: var(--font-outfit);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .strategic-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Financial Advisory Footer Block */
+        .advisory-block {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5));
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .advisory-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--accent-mist);
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0.35rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1.25rem;
+        }
+
+        .advisory-title {
+            font-family: var(--font-outfit);
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .advisory-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 300;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            body { padding: 1.5rem 1rem; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="category-badge">Professional Services / Automotive Consulting</span>
+            <h1>Automotive Consulting & Advisory</h1>
+            <p class="subtitle">Mapping the capital structure of a human-capital-intensive sector shaped by industry health, regulatory change, and the critical need for specialized expertise.</p>
+        </header>
+
+        <section class="vector-registry" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; backdrop-filter: blur(10px);">
+           <h3 style="font-family: var(--font-outfit); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+               📋 B2B Intelligence Vector Registry
+           </h3>
+           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+               <div>
+                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Component Area</span>
+                   <strong style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary);">Consulting & Advisory (product/business development, marketing, finance, HR, legal) for Automotive Industry</strong>
+               </div>
+               <div>
+                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Industry Sector</span>
+                   <strong style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary);">Professional Services / Automotive Consulting</strong>
+               </div>
+               <div>
+                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Macroeconomic Factors (Systemic)</span>
+                   <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.4; font-weight: 300;">Overall health of the automotive industry; foreign direct investment policies; ease of doing business; government policy changes impacting industry structure.</p>
+               </div>
+               <div>
+                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Microeconomic Factors (Entity-Specific)</span>
+                   <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.4; font-weight: 300;">Need for highly specialized domain expertise; talent acquisition and retention for consultants; maintaining client confidentiality; strong network and reputation building; project-based revenue volatility.</p>
+               </div>
+           </div>
+       </section>
+
+        <section class="overview-section">
+            <h2 class="overview-title">Business Area Context</h2>
+            <p class="overview-text">
+                Automotive consulting is a purely human-capital-driven business, its fortunes intrinsically linked to the health, complexity, and rate of change within the industry it serves. Demand is created by systemic events—major policy shifts like electrification, evolving FDI policies, or new emission standards create uncertainty that companies pay to navigate. However, the core business drivers are microeconomic and talent-centric. The ability to acquire and retain individuals with highly specialized, niche domain expertise is the primary determinant of success. This, combined with the inherent volatility of project-based revenue, means that while physical capital needs are low, investment in top-tier talent and brand reputation is paramount.
+            </p>
+        </section>
+
+        <main class="grid">
+            <div class="card card-mandates">
+                <div class="card-header">
+                    <span class="card-icon">🏛️</span>
+                    <span class="card-badge badge-mist">Systemic Catalyst</span>
+                </div>
+                <h3 class="card-title">Industry Health & Policy-Driven Demand</h3>
+                <p class="card-desc">
+                    The demand for advisory services is a direct derivative of the automotive industry's overall health and complexity. Economic downturns may spur cost-cutting consultancy, but major growth and policy shifts (e.g., emission norms, EV incentives, trade policies) are the primary catalysts, creating significant demand for strategic, financial, and legal expertise as companies navigate change.
+                </p>
+                <div class="strategic-highlight">
+                    <h4 class="strategic-title">⚡ CapEx Implication</h4>
+                    <p class="strategic-desc">Minimal physical CapEx is required. Capital is instead deployed on business development, marketing, and producing thought leadership content to capture the wave of demand created by external policy shifts and industry-wide transformations.</p>
+                </div>
+            </div>
+
+            <div class="card card-wear">
+                <div class="card-header">
+                    <span class="card-icon">⚙️</span>
+                    <span class="card-badge badge-cyan">Physical Load</span>
+                </div>
+                <h3 class="card-title">Concentrated Human Capital Expertise</h3>
+                <p class="card-desc">
+                    The core asset and 'physical load' of a consultancy is the intellectual horsepower of its team. The business depends on acquiring and retaining individuals with deep, specialized knowledge in hyper-niche areas—be it EV battery supply chain logistics, automotive cybersecurity frameworks, or international tax structuring for component suppliers. This knowledge is the firm's primary production asset.
+                </p>
+                <div class="strategic-highlight">
+                    <h4 class="strategic-title">⚡ CapEx Implication</h4>
+                    <p class="strategic-desc">CapEx is almost exclusively directed towards human capital. This translates to premium compensation packages to attract top-tier experts, continuous investment in professional training, and funding for internal research to maintain a leading edge on industry knowledge.</p>
+                </div>
+            </div>
+
+            <div class="card card-auxiliary">
+                <div class="card-header">
+                    <span class="card-icon">⚡</span>
+                    <span class="card-badge badge-amber">Operating Penalty</span>
+                </div>
+                <h3 class="card-title">Reputation Risk & Revenue Volatility</h3>
+                <p class="card-desc">
+                    A single high-profile project failure or breach of client confidentiality can inflict catastrophic and lasting damage on a consultancy's reputation—its most valuable asset. This existential risk is paired with the financial penalty of project-based revenue, which creates a 'feast or famine' cycle that complicates cash flow management and makes retaining talent during downturns a major challenge.
+                </p>
+                <div class="strategic-highlight">
+                    <h4 class="strategic-title">⚡ CapEx Implication</h4>
+                    <p class="strategic-desc">Requires investment in non-revenue-generating areas like enterprise-grade IT security, legal retainers, and professional indemnity insurance. Drives business development spend to build a diversified client pipeline and smooth out revenue volatility.</p>
+                </div>
+            </div>
+        </main>
+        
+        <section class="glossary-section" style="background: rgba(15, 23, 42, 0.45); border: 1px solid var(--card-border); border-radius: 20px; padding: 2.2rem; margin-top: 3rem; backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);">
+           <h3 style="font-family: var(--font-outfit); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+               📚 B2B Glossary & Factor Breakdown
+           </h3>
+           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+               
+               <!-- Macroeconomic Terms Explained -->
+               <div>
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.1rem; color: var(--accent-mist); margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                       Systemic Macroeconomic Terms
+                   </h4>
+                   <ul style="list-style: none;">
+                       <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Foreign Direct Investment (FDI) Policies</strong>
+                           <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">A country's laws and regulations regarding investments made by a company or individual from one country into business interests located in another country. These policies can drive demand for legal and financial advisory.</span>
+                       </li>
+                       <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Ease of Doing Business</strong>
+                           <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">An index that measures the simplicity of regulatory environments for starting and operating a business. A complex environment can increase demand for compliance and administrative consulting.</span>
+                       </li>
+                   </ul>
+               </div>
+
+               <!-- Microeconomic Terms Explained -->
+               <div>
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.1rem; color: var(--accent-mist); margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                       Entity-Specific Microeconomic Terms
+                   </h4>
+                   <ul style="list-style: none;">
+                       <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Specialized Domain Expertise</strong>
+                           <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">A deep and specific knowledge of a particular subject area that is not widely held. In automotive consulting, this is the primary value driver and key differentiator.</span>
+                       </li>
+                       <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Project-Based Revenue Volatility</strong>
+                           <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">The fluctuation in a company's income due to its reliance on discrete projects with defined start and end dates, leading to periods of high revenue ('feast') followed by periods of low revenue ('famine').</span>
+                       </li>
+                   </ul>
+               </div>
+
+           </div>
+       </section>
+
+        <footer class="advisory-block">
+            <span class="advisory-badge">Strategic Takeaway</span>
+            <h2 class="advisory-title">B2B Vendor & Investment Summary</h2>
+            <p class="advisory-text">
+                Boutique advisory firms with principals who possess globally recognized, deep expertise in a specific, complex automotive niche (e.g., functional safety, battery supply chain ethics, trade law) command the highest fees and strongest client loyalty. This is a low-CapEx, high-OpEx business where value is tied to reputation and human capital, not physical assets. External financing is rare and typically limited to working capital lines of credit from commercial banks to manage payroll and operational expenses between project billing cycles. Growth is primarily funded through retained earnings.
+            </p>
+        </footer>
+
+        <section class="lending-section" style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--card-border); border-radius: 20px; padding: 2.2rem; margin-top: 3rem; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
+           <h3 style="font-family: var(--font-outfit); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+               🏦 Active Institutional Lenders & Financiers
+           </h3>
+           <p style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 300; line-height: 1.6; margin-bottom: 1.5rem;">
+               The following leading financial institutions, developmental agencies, and commercial banks actively provide project debt, credit limits, and working capital solutions to Tier-1/Tier-2 suppliers and asset operators in the <strong>Consulting & Advisory (product/business development, marketing, finance, HR, legal) for Automotive Industry</strong> space.
+           </p>
+           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+               <!-- Card 1: Key Lenders & Market Shares -->
+               <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+                       🏢 Primary Sources & Market Share
+                   </h4>
+                   <ul style="list-style: none; padding: 0; margin: 0;">
+                       <li style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.5rem;">
+                           <strong style="color: var(--text-primary); font-size: 0.9rem;">HSBC (Commercial Banking)</strong><br>
+                           <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                           <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                       </li>
+                       <li style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.5rem;">
+                           <strong style="color: var(--text-primary); font-size: 0.9rem;">HDFC Bank (Working Capital)</strong><br>
+                           <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                           <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                       </li>
+                       <li style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.5rem;">
+                           <strong style="color: var(--text-primary); font-size: 0.9rem;">ICICI Bank (Business Banking)</strong><br>
+                           <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                           <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                       </li>
+                       <li style="margin-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); font-size: 0.9rem;">[Primarily Self-Funded / Retained Earnings]</strong><br>
+                           <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                           <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                       </li>
+                   </ul>
+               </div>
+               <!-- Card 2: Preferred Products -->
+               <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                       💼 Financing Instruments
+                   </h4>
+                   <ul style="list-style: none; padding: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                       <li style="margin-bottom: 0.5rem;">• <strong>Working Capital / Line of Credit:</strong> To manage payroll and operational expenses during lulls between projects.</li>
+                       <li style="margin-bottom: 0.5rem;">• <strong>Invoice Discounting:</strong> To unlock cash from unpaid client invoices.</li>
+                       <li>• <strong>Retained Earnings:</strong> The primary source of funding for growth and investment.</li>
+                   </ul>
+               </div>
+               <!-- Card 3: Key Underwriting Benchmarks -->
+               <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                       📊 Underwriting Benchmarks
+                   </h4>
+                   <ul style="list-style: none; padding: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                       <li style="margin-bottom: 0.5rem;">• <strong>Client Portfolio Quality:</strong> Strength and reputation of the consultancy's client list.</li>
+                       <li style="margin-bottom: 0.5rem;">• <strong>Principal's Reputation:</strong> The track record and public profile of the key partners or principals.</li>
+                       <li>• <strong>Receivables Aging:</strong> Analysis of how quickly clients pay their invoices.</li>
+                   </ul>
+               </div>
+               <!-- Card 4: Quantitative Capital Parameters -->
+               <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                       📈 Quantitative Capital Parameters
+                   </h4>
+                   <ul style="list-style: none; padding: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                       <li style="margin-bottom: 0.5rem;">• <strong>Interest Rate:</strong> N/A (Subject to Benchmark Rate & Credit Risk Assessment)</li>
+                       <li style="margin-bottom: 0.5rem;">• <strong>Standard Facility Size:</strong> N/A (Case-by-Case / Project Scale Dependent)</li>
+                       <li style="margin-bottom: 0.5rem;">• <strong>Target Debt-to-Equity:</strong> N/A (Capital Structure & Credit Rating Dependent)</li>
+                       <li>• <strong>Loan Maturity Tenure:</strong> N/A (Facility & Asset Life Cycle Dependent)</li>
+                   </ul>
+               </div>
+           </div>
+       </section>
+
+    </div>
+</body>
+</html>

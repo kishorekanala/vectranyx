@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Research: EV Charging Infrastructure</title>
+    <style>
+        /* Curated HSL Design Tokens (Sleek Mist Cyan Theme) */
+        :root {
+            --bg-dark: hsl(185, 20%, 5%);
+            --bg-grid: hsl(185, 20%, 8%);
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --card-border: rgba(255, 255, 255, 0.07);
+            --card-border-hover: rgba(6, 182, 212, 0.35);
+            --text-primary: hsl(210, 40%, 98%);
+            --text-secondary: hsl(215, 25%, 72%);
+            --text-muted: hsl(215, 16%, 50%);
+            
+            --accent-mist: hsl(185, 45%, 65%);
+            --accent-cyan: hsl(190, 80%, 45%);
+            --accent-amber: hsl(40, 92%, 52%);
+            
+            --primary-gradient: linear-gradient(135deg, hsl(185, 45%, 65%), hsl(190, 80%, 45%));
+            --glow-mist: rgba(6, 182, 212, 0.15);
+            --glow-cyan: rgba(34, 211, 238, 0.12);
+            --glow-amber: rgba(245, 158, 11, 0.12);
+            
+            --font-outfit: 'Outfit', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-inter);
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.07) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(34, 211, 238, 0.03) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Layout */
+        header {
+            margin-bottom: 3.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--accent-mist);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: var(--font-outfit);
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            font-weight: 300;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Overview Section */
+        .overview-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .overview-title {
+            font-family: var(--font-outfit);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overview-title::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .overview-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        /* Responsive Driver Grid (3 Cards) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* High-End Glassmorphic Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Card-Specific Accents */
+        .card-mandates::before { background: var(--accent-mist); }
+        .card-mandates { box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 0 20px var(--glow-mist); }
+
+        .card-wear::before { background: var(--accent-cyan); }
+        .card-wear { box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 0 20px var(--glow-cyan); }
+
+        .card-auxiliary::before { background: var(--accent-amber); }
+        .card-auxiliary { box-shadow: 0 15px 35px rgba(0,0,0,0.25), inset 0 0 20px var(--glow-amber); }
+
+        /* Card Hover States with Subtle Scale and Border Glow */
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Card Header & Badges */
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card-badge {
+            font-family: var(--font-outfit);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-mist { background: rgba(6, 182, 212, 0.1); color: var(--accent-mist); border: 1px solid rgba(6, 182, 212, 0.2); }
+        .badge-cyan { background: rgba(34, 211, 238, 0.1); color: var(--accent-cyan); border: 1px solid rgba(34, 211, 238, 0.2); }
+        .badge-amber { background: rgba(245, 158, 11, 0.1); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.2); }
+
+        /* Card Typography */
+        .card-title {
+            font-family: var(--font-outfit);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.2px;
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Strategic Highlights */
+        .strategic-highlight {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .strategic-title {
+            font-family: var(--font-outfit);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .strategic-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Financial Advisory Footer Block */
+        .advisory-block {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5));
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .advisory-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--accent-mist);
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0.35rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1.25rem;
+        }
+
+        .advisory-title {
+            font-family: var(--font-outfit);
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .advisory-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            font-weight: 300;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            body { padding: 1.5rem 1rem; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="category-badge">EV Infrastructure / Renewable Energy Support</span>
+            <h1>EV Charging Infrastructure</h1>
+            <p class="subtitle">Analyzing the capital-intensive rollout of a national charging network, driven by government incentives but constrained by grid capacity, land acquisition, and high upfront hardware costs.</p>
+        </header>
+
+        <section class="vector-registry" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; backdrop-filter: blur(10px);">
+           <h3 style="font-family: var(--font-outfit); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+               📋 B2B Intelligence Vector Registry
+           </h3>
+           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+               <div>
+                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Component Area</span>
+                   <strong style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary);">EV Charging Stations (AC/DC chargers) and Ancillaries (cables, connectors, power management systems)</strong>
+               </div>
+               <div>
+                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Industry Sector</span>
+                   <strong style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary);">Electric Vehicle (EV) Infrastructure / Renewable Energy Support</strong>
+               </div>
+               <div>
+                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Macroeconomic Factors (Systemic)</span>
+                   <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.4; font-weight: 300;">Government incentives for EV charging network expansion; power grid stability and capacity; land availability for charging stations; electricity tariffs for commercial charging.</p>
+               </div>
+               <div>
+                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Microeconomic Factors (Entity-Specific)</span>
+                   <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.4; font-weight: 300;">High upfront capital expenditure for fast chargers; interoperability challenges with different EV models; cybersecurity risks for networked chargers; maintenance costs in public environments.</p>
+               </div>
+           </div>
+       </section>
+
+        <section class="overview-section">
+            <h2 class="overview-title">Business Area Context</h2>
+            <p class="overview-text">
+                The deployment of EV charging infrastructure represents a foundational pillar for the transition to electric mobility. This sector is aggressively propelled by government incentives and a clear policy direction, yet it faces formidable capital and logistical hurdles. Systemic issues such as power grid capacity, volatile commercial electricity tariffs, and the scarcity of prime real estate dictate the pace and location of network expansion. For Charge Point Operators (CPOs), the primary challenge is the intensely high upfront capital expenditure for DC fast chargers, which must be weighed against utilization rates and long-term profitability. These factors make financing and operating charging infrastructure a complex interplay of hardware acquisition, real estate strategy, and energy market navigation.
+            </p>
+        </section>
+
+        <main class="grid">
+            <div class="card card-mandates">
+                <div class="card-header">
+                    <span class="card-icon">🏛️</span>
+                    <span class="card-badge badge-mist">Systemic Catalyst</span>
+                </div>
+                <h3 class="card-title">Incentives, Grid Constraints & Land Use</h3>
+                <p class="card-desc">
+                    Government incentives are the primary catalyst, encouraging investment to build a national charging network. However, this ambition is tempered by the reality of an already strained power grid, which may require significant local upgrades. The availability and cost of land with adequate power access in high-traffic locations is a critical systemic bottleneck.
+                </p>
+                <div class="strategic-highlight">
+                    <h4 class="strategic-title">⚡ CapEx Implication</h4>
+                    <p class="strategic-desc">Drives initial CapEx for charger hardware to meet incentive-driven timelines. Triggers secondary, often substantial, CapEx for electrical infrastructure upgrades (transformers, switchgear) and long-term leases or outright purchase of strategic real estate parcels.</p>
+                </div>
+            </div>
+
+            <div class="card card-wear">
+                <div class="card-header">
+                    <span class="card-icon">⚙️</span>
+                    <span class="card-badge badge-cyan">Physical Load</span>
+                </div>
+                <h3 class="card-title">High Upfront Cost of Fast Chargers</h3>
+                <p class="card-desc">
+                    The core physical asset and primary capital hurdle is the charging hardware itself. While slower AC chargers are affordable, the market demands high-speed DC fast chargers (50kW to 350kW) to ensure quick turnaround times. The very high cost of this equipment, especially at the higher end of the power spectrum, is the largest single component of project cost.
+                </p>
+                <div class="strategic-highlight">
+                    <h4 class="strategic-title">⚡ CapEx Implication</h4>
+                    <p class="strategic-desc">The majority of project capital is allocated to the procurement of a small number of high-power DC charging units. This concentration of cost necessitates access to significant upfront capital, often beyond the scope of traditional small business loans, requiring project finance or equity investment.</p>
+                </div>
+            </div>
+
+            <div class="card card-auxiliary">
+                <div class="card-header">
+                    <span class="card-icon">⚡</span>
+                    <span class="card-badge badge-amber">Operating Penalty</span>
+                </div>
+                <h3 class="card-title">Interoperability & Uptime Assurance</h3>
+                <p class="card-desc">
+                    A significant operating penalty arises from software and hardware interoperability issues between different EV makes and charging networks, leading to poor customer experience. Furthermore, chargers are complex electromechanical systems deployed in uncontrolled public environments, making them susceptible to damage and requiring a robust, costly maintenance and service infrastructure to ensure high uptime.
+                </p>
+                <div class="strategic-highlight">
+                    <h4 class="strategic-title">⚡ CapEx Implication</h4>
+                    <p class="strategic-desc">Justifies investment in chargers that are Open Charge Point Protocol (OCPP) compliant and backed by strong software. Requires an ongoing operational budget for maintenance contracts, remote monitoring systems, and a spare parts inventory, which must be factored into the initial business case.</p>
+                </div>
+            </div>
+        </main>
+        
+        <section class="glossary-section" style="background: rgba(15, 23, 42, 0.45); border: 1px solid var(--card-border); border-radius: 20px; padding: 2.2rem; margin-top: 3rem; backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);">
+           <h3 style="font-family: var(--font-outfit); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+               📚 B2B Glossary & Factor Breakdown
+           </h3>
+           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+               
+               <!-- Macroeconomic Terms Explained -->
+               <div>
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.1rem; color: var(--accent-mist); margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                       Systemic Macroeconomic Terms
+                   </h4>
+                   <ul style="list-style: none;">
+                       <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Grid Stability & Capacity</strong>
+                           <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">The ability of the electrical grid to reliably supply power without fluctuations or outages. High-power EV charging hubs can place significant strain on local grid capacity, often requiring costly upgrades.</span>
+                       </li>
+                       <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Commercial Electricity Tariffs</strong>
+                           <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">The rate structure under which businesses purchase electricity, which can include demand charges, time-of-use rates, and other factors that significantly impact the profitability of selling electricity to EV drivers.</span>
+                       </li>
+                   </ul>
+               </div>
+
+               <!-- Microeconomic Terms Explained -->
+               <div>
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.1rem; color: var(--accent-mist); margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                       Entity-Specific Microeconomic Terms
+                   </h4>
+                   <ul style="list-style: none;">
+                       <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">DC Fast Charger</strong>
+                           <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">A type of EV charger that converts AC power to DC before it enters the vehicle, allowing for much faster charging times (typically 20-40 minutes) compared to AC chargers. They are essential for public, long-distance travel but are very expensive.</span>
+                       </li>
+                       <li style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); display: block; font-size: 0.95rem; font-family: var(--font-outfit); margin-bottom: 0.25rem;">Interoperability (OCPP)</strong>
+                           <span style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 300; line-height: 1.5; display: block;">The ability of hardware and software from different vendors to communicate and work together. The Open Charge Point Protocol (OCPP) is a global standard that enables interoperability between charging stations and network management systems.</span>
+                       </li>
+                   </ul>
+               </div>
+
+           </div>
+       </section>
+
+        <footer class="advisory-block">
+            <span class="advisory-badge">Strategic Takeaway</span>
+            <h2 class="advisory-title">B2B Vendor & Investment Summary</h2>
+            <p class="advisory-text">
+                The most attractive investment opportunities are Charge Point Operators (CPOs) who secure prime real estate with high grid capacity, deploy reliable, interoperable (OCPP-compliant) hardware, and have a sophisticated software backend to manage utilization and pricing. Financing for this sector is typically long-term and patient, often structured as project finance from infrastructure funds, energy companies, and development banks, rather than traditional commercial loans, due to the high upfront CapEx and slow initial return profile.
+            </p>
+        </footer>
+
+        <section class="lending-section" style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--card-border); border-radius: 20px; padding: 2.2rem; margin-top: 3rem; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
+           <h3 style="font-family: var(--font-outfit); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+               🏦 Active Institutional Lenders & Financiers
+           </h3>
+           <p style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 300; line-height: 1.6; margin-bottom: 1.5rem;">
+               The following leading financial institutions, developmental agencies, and commercial banks actively provide project debt, credit limits, and working capital solutions to Tier-1/Tier-2 suppliers and asset operators in the <strong>EV Charging Stations (AC/DC chargers) and Ancillaries (cables, connectors, power management systems)</strong> space.
+           </p>
+           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+               <!-- Card 1: Key Lenders & Market Shares -->
+               <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+                       🏢 Primary Sources & Market Share
+                   </h4>
+                   <ul style="list-style: none; padding: 0; margin: 0;">
+                       <li style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.5rem;">
+                           <strong style="color: var(--text-primary); font-size: 0.9rem;">National Infrastructure Investment Fund (NIIF)</strong><br>
+                           <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                           <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                       </li>
+                       <li style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.5rem;">
+                           <strong style="color: var(--text-primary); font-size: 0.9rem;">Power Finance Corporation (PFC)</strong><br>
+                           <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                           <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                       </li>
+                       <li style="margin-bottom: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 0.5rem;">
+                           <strong style="color: var(--text-primary); font-size: 0.9rem;">Macquarie Infrastructure and Real Assets (MIRA)</strong><br>
+                           <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                           <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                       </li>
+                       <li style="margin-bottom: 0.75rem;">
+                           <strong style="color: var(--text-primary); font-size: 0.9rem;">Private Equity / Venture Capital Funds</strong><br>
+                           <span style="font-size: 0.78rem; color: var(--text-muted);">Est. Market Share: </span>
+                           <span style="font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; font-weight: 500;">N/A (Proprietary / Private Exposure)</span>
+                       </li>
+                   </ul>
+               </div>
+               <!-- Card 2: Preferred Products -->
+               <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                       💼 Financing Instruments
+                   </h4>
+                   <ul style="list-style: none; padding: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                       <li style="margin-bottom: 0.5rem;">• <strong>Project Finance:</strong> For developing large charging hubs, with debt sized against future cash flows.</li>
+                       <li style="margin-bottom: 0.5rem;">• <strong>Equity Investment:</strong> Venture capital and private equity funding for CPOs to scale their network.</li>
+                       <li>• <strong>Asset-Backed Loans/Leasing:</strong> For the procurement of charging hardware.</li>
+                   </ul>
+               </div>
+               <!-- Card 3: Key Underwriting Benchmarks -->
+               <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                       📊 Underwriting Benchmarks
+                   </h4>
+                   <ul style="list-style: none; padding: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                       <li style="margin-bottom: 0.5rem;">• <strong>Min. DSCR:</strong> N/A (Transaction-Specific / Underwriter Discretionary)</li>
+                       <li style="margin-bottom: 0.5rem;">• <strong>Location & Traffic Analysis:</strong> Detailed studies of vehicle traffic and site accessibility are paramount.</li>
+                       <li>• <strong>Grid Connection Agreements:</strong> Secured agreements with local power distribution companies are non-negotiable.</li>
+                   </ul>
+               </div>
+               <!-- Card 4: Quantitative Capital Parameters -->
+               <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1.25rem;">
+                   <h4 style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                       📈 Quantitative Capital Parameters
+                   </h4>
+                   <ul style="list-style: none; padding: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                       <li style="margin-bottom: 0.5rem;">• <strong>Interest Rate:</strong> N/A (Subject to Benchmark Rate & Credit Risk Assessment)</li>
+                       <li style="margin-bottom: 0.5rem;">• <strong>Standard Facility Size:</strong> N/A (Case-by-Case / Project Scale Dependent)</li>
+                       <li style="margin-bottom: 0.5rem;">• <strong>Target Debt-to-Equity:</strong> N/A (Capital Structure & Credit Rating Dependent)</li>
+                       <li>• <strong>Loan Maturity Tenure:</strong> N/A (Facility & Asset Life Cycle Dependent)</li>
+                   </ul>
+               </div>
+           </div>
+       </section>
+
+    </div>
+</body>
+</html>

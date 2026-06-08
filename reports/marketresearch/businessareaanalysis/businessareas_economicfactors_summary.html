@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economic Factors Summarization Registry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: hsl(222, 24%, 6%);
+            --bg-grid: hsl(222, 24%, 9%);
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: hsl(210, 40%, 98%);
+            --text-secondary: hsl(215, 25%, 72%);
+            --text-muted: hsl(215, 16%, 50%);
+            --accent-cyan: hsl(190, 80%, 45%);
+            --accent-mist: hsl(185, 45%, 65%);
+            --accent-glow: rgba(6, 182, 212, 0.15);
+            --primary-gradient: linear-gradient(135deg, hsl(185, 45%, 65%), hsl(190, 80%, 45%));
+            --font-outfit: 'Outfit', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-inter);
+            line-height: 1.6;
+            padding: 3rem 1.5rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.07) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.04) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--accent-mist);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-family: var(--font-outfit);
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        /* Control bar with Search */
+        .control-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .search-container {
+            position: relative;
+            flex-grow: 1;
+            max-width: 500px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1.2rem 0.8rem 2.8rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            color: var(--text-primary);
+            font-family: var(--font-inter);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .search-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .search-icon {
+            position: absolute;
+            left: 1.1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+        .stats-badge {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-family: var(--font-outfit);
+            font-weight: 500;
+        }
+        
+        /* Glassmorphic Table Container */
+        .registry-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th {
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        th:hover {
+            color: var(--accent-mist);
+        }
+        th::after {
+            content: " ↕";
+            font-size: 0.75rem;
+            opacity: 0.5;
+            margin-left: 5px;
+            position: relative;
+        }
+        td {
+            padding: 1.2rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            font-weight: 300;
+            line-height: 1.5;
+            vertical-align: top;
+        }
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+            color: var(--text-primary);
+        }
+        
+        .col-business {
+            font-weight: 500;
+            color: var(--text-primary);
+            width: 25%;
+        }
+        .col-sector {
+            color: var(--accent-cyan);
+            font-weight: 500;
+            width: 20%;
+        }
+        .col-macro {
+            width: 27%;
+        }
+        .col-micro {
+            width: 28%;
+        }
+        
+        /* Empty results row style */
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        /* Floating Back button */
+        .back-button {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: var(--font-outfit);
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid var(--card-border);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            color: var(--text-primary);
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <span>←</span> Central Portal
+            </a>
+            <span class="badge">Consolidated Asset Intelligence</span>
+            <h1>Business Areas & Economic Factors Summary</h1>
+            <p class="subtitle">A cross-sector registry analyzing systemic macroeconomic factors and operational microeconomic risks across key asset business areas.</p>
+        </header>
+        
+        <div class="control-bar">
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" class="search-input" placeholder="Search by business area, sector, or factors..." onkeyup="filterTable()">
+            </div>
+            <div class="stats-badge" id="stats-badge">
+                Showing 22 Business Areas
+            </div>
+        </div>
+        
+        <div class="registry-card">
+            <table id="summary-table">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)" style="width: 25%;">Business Area</th>
+                        <th onclick="sortTable(1)" style="width: 20%;">Industry Sector</th>
+                        <th onclick="sortTable(2)" style="width: 27%;">Macroeconomic Factors</th>
+                        <th onclick="sortTable(3)" style="width: 28%;">Microeconomic Factors</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    
+                <tr>
+                    <td class="col-business">Diagnostic tools and equipment, specialized repair machinery, OEM/OES spare parts supply chain management, technical training programs for automotive technicians, workshop management software, and fleet maintenance services.</td>
+                    <td class="col-sector">Automotive Aftermarket / Repair & Maintenance Services</td>
+                    <td class="col-macro">Road safety regulations, growth in vehicle parc (number of vehicles on road), insurance regulations impacting repair claims and cashless services, GST structure on services and parts, government policies on vehicle scrappage.</td>
+                    <td class="col-micro">Availability of genuine spare parts and counterfeit issues, shortage of skilled mechanics and technicians, continuous investment in latest diagnostic equipment, building customer loyalty and trust, managing complex supply chains for diverse parts.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Tyres for various vehicle types and Tyre Ancillaries (rubber compounds, steel belts, molds)</td>
+                    <td class="col-sector">Automotive Ancillary Manufacturing / Rubber & Plastics Industry</td>
+                    <td class="col-macro">Volatility in natural rubber prices; import duties on synthetic rubber; infrastructure development leading to higher vehicle usage; environmental regulations on tyre disposal.</td>
+                    <td class="col-micro">Energy-intensive manufacturing processes; skilled labor for curing and molding; R&D for advanced tread patterns and materials; intense competition from international brands.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Multi-segment automotive components (e.g., Engine & Powertrain components, Electrical & Electronic systems, EV battery enclosures & thermal management, Chassis & Suspension parts, Rubber & Plastic moulded ancillaries, Tyres)</td>
+                    <td class="col-sector">Automotive Manufacturing & Ancillary Industry / Electric Vehicle Ecosystem</td>
+                    <td class="col-macro">Government Production Linked Incentive (PLI) schemes for auto and auto components; FAME-II subsidies for EVs; evolving emission norms (e.g., BS6); global supply chain disruptions (e.g., semiconductor shortages); raw material price volatility (e.g., steel, rare earth metals for EV batteries); import duties on certain components.</td>
+                    <td class="col-micro">High R&D costs for developing advanced materials and EV-specific components; skilled labor shortages (especially for EV technologies); quality control and homologation costs; intense competition from international players; high capital expenditure for plant modernization and new technology adoption.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Diverse Automotive Components (ICE: engine parts, braking systems, lighting, infotainment)</td>
+                    <td class="col-sector">Automotive Manufacturing & Supply Chain (ICE Vehicles)</td>
+                    <td class="col-macro">Government Production Linked Incentive (PLI) schemes; import tariffs on raw materials; fluctuating fuel prices impacting vehicle demand; global supply chain disruptions.</td>
+                    <td class="col-micro">High R&D costs for new component development; skilled labor availability for precision manufacturing; intense competition; inventory management challenges; stringent quality control and defect rate targets.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Engine components (pistons, crankshafts), braking systems (ABS, EBD), transmission systems (manual, automatic), electrical wiring harnesses, infotainment systems, lighting systems, body panels for ICE/Hybrid vehicles.</td>
+                    <td class="col-sector">Automotive Manufacturing / Component Supply</td>
+                    <td class="col-macro">Government policies on vehicle emissions (BS6, CAFE norms), import/export tariffs on raw materials and finished components, PLI schemes for automotive components, global supply chain disruptions impacting raw material availability.</td>
+                    <td class="col-micro">High R&D costs for new materials/technologies, skilled labor shortages (e.g., specialized engineers for electronics), intense competition, fluctuating raw material prices (steel, aluminum, plastics), stringent quality control and reliability demands.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Engine components (pistons, crankshafts), braking systems (ABS, EBD), transmission systems (manual, automatic), electrical wiring harnesses, infotainment systems, lighting systems, body panels for ICE/Hybrid vehicles.</td>
+                    <td class="col-sector">Automotive Manufacturing / Component Supply</td>
+                    <td class="col-macro">Government policies on vehicle emissions (BS6, CAFE norms); import/export tariffs on raw materials and finished components; PLI schemes for automotive components; global supply chain disruptions impacting raw material availability.</td>
+                    <td class="col-micro">High R&D costs for new materials/technologies; skilled labor shortages (e.g., specialized engineers for electronics); intense competition; fluctuating raw material prices (steel, aluminum, plastics); stringent quality control and reliability demands.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Aftermarket Vehicle Repair & Maintenance Services (for ICE & EV, including parts, trimming, tuning, tyre repair)</td>
+                    <td class="col-sector">Automotive Services / Aftermarket</td>
+                    <td class="col-macro">Economic growth influencing consumer spending on vehicle maintenance; road safety regulations; GST rates on services and spare parts; insurance claim processing policies.</td>
+                    <td class="col-micro">Shortage of certified mechanics (especially for EVs); cost of specialized diagnostic tools; managing diverse spare parts inventory; maintaining customer trust and quality of service; competition from organized vs. unorganized sectors.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Embedded software for ECUs, infotainment systems, ADAS, telematics units; cloud-based fleet management platforms; manufacturing execution systems (MES) for auto plants; cybersecurity solutions for connected cars.</td>
+                    <td class="col-sector">Automotive Software / IT Services</td>
+                    <td class="col-macro">Digital India initiatives, data privacy regulations (e.g., India's PDP Bill), government push for connected vehicles and smart mobility, availability of skilled IT workforce.</td>
+                    <td class="col-micro">Rapid evolution of software technologies and platforms, high R&D for AI/ML in ADAS and autonomous driving, talent acquisition and retention in competitive IT market, intellectual property protection, complex integration with diverse hardware systems.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Embedded software for ECUs, infotainment systems, ADAS, telematics units; cloud-based fleet management platforms; manufacturing execution systems (MES) for auto plants; cybersecurity solutions for connected cars.</td>
+                    <td class="col-sector">Automotive Software / IT Services</td>
+                    <td class="col-macro">Digital India initiatives; data privacy regulations (e.g., India's PDP Bill); government push for connected vehicles and smart mobility; availability of skilled IT workforce.</td>
+                    <td class="col-micro">Rapid evolution of software technologies and platforms; high R&D for AI/ML in ADAS and autonomous driving; talent acquisition and retention in competitive IT market; intellectual property protection; complex integration with diverse hardware systems.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Embedded software for ECUs & ADAS, Infotainment systems, Telematics & Connectivity platforms, Manufacturing Execution Systems (MES), Supply Chain Management (SCM) software, Dealership Management Systems (DMS), IoT solutions for fleet management, Data analytics & AI for predictive maintenance.</td>
+                    <td class="col-sector">Automotive Technology / IT & Software Services</td>
+                    <td class="col-macro">Digital India initiatives, increasing focus on cyber-physical systems and Industry 4.0, data localization policies, intellectual property rights protection, global demand for connected and autonomous vehicles driving software innovation.</td>
+                    <td class="col-micro">Shortage of specialized automotive software engineers, high R&D expenditure for developing cutting-edge AI/ML algorithms and cybersecurity features, rapid technological shifts requiring continuous skill upgrades, integration complexities with diverse hardware platforms, compliance with automotive safety standards (e.g., ISO 26262), data privacy concerns.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Automotive Software (infotainment, ADAS, telematics) and IT Services (cloud, analytics, cybersecurity)</td>
+                    <td class="col-sector">Automotive Technology / IT Services</td>
+                    <td class="col-macro">Digital India initiatives; data privacy regulations; availability of high-speed internet infrastructure; government support for tech startups.</td>
+                    <td class="col-micro">Rapid technological evolution requiring continuous R&D shortage of specialized automotive software engineers; intellectual property protection; rigorous testing and validation for safety-critical software.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">AC/DC charging stations (slow, fast, ultra-fast), charging station management systems (CSMS), payment gateways, smart meters, power cables, and connectors for electric vehicles.</td>
+                    <td class="col-sector">EV Infrastructure / Renewable Energy Solutions</td>
+                    <td class="col-macro">Government mandates for EV charging points, smart city initiatives, electricity tariffs for charging, grid stability and capacity challenges, land availability and permitting for charging stations.</td>
+                    <td class="col-micro">High CapEx for fast charging infrastructure, interoperability challenges among different charging standards, cybersecurity risks for networked chargers, rapid technological advancements in charging tech, demand uncertainty in nascent stages of EV adoption.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">AC/DC charging stations (slow, fast, ultra-fast), charging station management systems (CSMS), payment gateways, smart meters, power cables, and connectors for electric vehicles.</td>
+                    <td class="col-sector">EV Infrastructure / Renewable Energy Solutions</td>
+                    <td class="col-macro">Government mandates for EV charging points; smart city initiatives; electricity tariffs for charging; grid stability and capacity challenges; land availability and permitting for charging stations.</td>
+                    <td class="col-micro">High CapEx for fast charging infrastructure; interoperability challenges among different charging standards; cybersecurity risks for networked chargers; rapid technological advancements in charging tech; demand uncertainty in nascent stages of EV adoption.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">EV Charging Stations (AC/DC chargers) and Ancillaries (cables, connectors, power management systems)</td>
+                    <td class="col-sector">Electric Vehicle (EV) Infrastructure / Renewable Energy Support</td>
+                    <td class="col-macro">Government incentives for EV charging network expansion; power grid stability and capacity; land availability for charging stations; electricity tariffs for commercial charging.</td>
+                    <td class="col-micro">High upfront capital expenditure for fast chargers; interoperability challenges with different EV models; cybersecurity risks for networked chargers; maintenance costs in public environments.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">EV Components (batteries, electric motors, power electronics, charging inlets)</td>
+                    <td class="col-sector">Electric Vehicle (EV) Manufacturing & Supply Chain</td>
+                    <td class="col-macro">FAME II subsidies for EV adoption; government push for EV infrastructure; international agreements on battery raw material sourcing; rising electricity costs.</td>
+                    <td class="col-micro">Rapid technological obsolescence in battery technology; significant capital investment for specialized EV component production lines; reliance on imported critical minerals; talent shortage in EV engineering.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">EV Charging Station Hardware (AC/DC chargers, connectors, power electronics), Charging Management Systems (CMS) software, Grid integration solutions, Ancillary electrical equipment (transformers, switchgear).</td>
+                    <td class="col-sector">Electric Vehicle Infrastructure Development / Energy & Smart Mobility Solutions</td>
+                    <td class="col-macro">Government mandates for EV adoption targets, subsidies for charging infrastructure deployment, evolving charging standards (e.g., CCS, CHAdeMO, Bharat EV Charger), electricity tariff policies for charging, land availability and permitting regulations.</td>
+                    <td class="col-micro">High upfront investment for high-power charging stations, interoperability challenges between different charger brands and vehicle models, grid capacity limitations and upgrade costs, cybersecurity risks for networked charging stations, rapid technological obsolescence of charging technology, need for robust maintenance and service networks.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">EV Charging Station Hardware (AC/DC chargers, connectors, power electronics), Charging Management Systems (CMS) software, Grid integration solutions, Ancillary electrical equipment (transformers, switchgear).</td>
+                    <td class="col-sector">Electric Vehicle Infrastructure Development / Smart Mobility Solutions</td>
+                    <td class="col-macro">Government mandates for EV adoption targets; subsidies for charging infrastructure deployment; evolving charging standards (e.g., CCS, CHAdeMO, Bharat EV Charger); electricity tariff policies for charging; land availability and permitting regulations.</td>
+                    <td class="col-micro">High upfront investment for high-power charging stations; interoperability challenges between different charger brands and vehicle models; grid capacity limitations and upgrade costs; cybersecurity risks for networked charging stations; rapid technological obsolescence of charging technology; need for robust maintenance and service networks.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">EV-specific components such as battery packs (Li-ion cells, modules, BMS), electric motors (PMSM, Induction motors), power electronics (inverters, converters, OBC), EV specific braking systems, thermal management systems, and charging port assemblies.</td>
+                    <td class="col-sector">Electric Vehicle Manufacturing / Advanced Automotive Components</td>
+                    <td class="col-macro">FAME II subsidies, state-level EV policies, raw material availability for batteries (lithium, cobalt, nickel), global EV demand trends, government policies on charging infrastructure development.</td>
+                    <td class="col-micro">High upfront investment in battery manufacturing/assembly, rapid technological obsolescence, dependence on critical mineral imports, challenges in battery recycling, shortage of specialized engineering talent for EV powertrain.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Strategic advisory for market entry/expansion, product development lifecycle consulting, supply chain optimization, manufacturing process re-engineering, digital transformation strategy, regulatory compliance advisory, sustainability consulting.</td>
+                    <td class="col-sector">Management Consulting / Automotive Sector</td>
+                    <td class="col-macro">Ease of doing business index in India; foreign direct investment (FDI) policies; industry-specific government policies (e.g., 'Make in India' for auto); overall economic growth rate impacting corporate investments; geopolitical stability.</td>
+                    <td class="col-micro">Talent acquisition and retention (domain experts, experienced consultants); maintaining client confidentiality and data security; reputation management and brand building; intense competition from global and niche consulting firms; cyclical demand tied to industry growth and M&A activities.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Consulting & Advisory (product/business development, marketing, finance, HR, legal) for Automotive Industry</td>
+                    <td class="col-sector">Professional Services / Automotive Consulting</td>
+                    <td class="col-macro">Overall health of the automotive industry; foreign direct investment policies; ease of doing business; government policy changes impacting industry structure.</td>
+                    <td class="col-micro">Need for highly specialized domain expertise; talent acquisition and retention for consultants; maintaining client confidentiality; strong network and reputation building; project-based revenue volatility.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Radial and bias tyres for 2W, 3W, PV, CV, and OTR vehicles; specialized tyres for EVs; tyre tubes, flaps, and retreading materials.</td>
+                    <td class="col-sector">Tyre Manufacturing / Rubber Products</td>
+                    <td class="col-macro">Rubber (natural and synthetic) price volatility, anti-dumping duties, government regulations on tyre standards (e.g., rolling resistance, wet grip), infrastructure development impacting vehicle sales and logistics.</td>
+                    <td class="col-micro">Energy-intensive manufacturing processes, environmental regulations on waste disposal and pollution control, intense competition from international and domestic players, R&D for sustainable materials, complexities in distribution networks.</td>
+                </tr>
+                <tr>
+                    <td class="col-business">Radial and bias tyres for 2W, 3W, PV, CV, and OTR vehicles; specialized tyres for EVs; tyre tubes, flaps, and retreading materials.</td>
+                    <td class="col-sector">Tyre Manufacturing / Rubber Products</td>
+                    <td class="col-macro">Rubber (natural and synthetic) price volatility; anti-dumping duties; government regulations on tyre standards (e.g., rolling resistance, wet grip); infrastructure development impacting vehicle sales and logistics.</td>
+                    <td class="col-micro">Energy-intensive manufacturing processes; environmental regulations on waste disposal and pollution control; intense competition from international and domestic players; R&D for sustainable materials; complexities in distribution networks.</td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="no-results-msg" class="no-results">
+                No matching business areas found.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterTable() {
+            const input = document.getElementById("search-input");
+            const filter = input.value.toLowerCase();
+            const tbody = document.getElementById("table-body");
+            const trs = tbody.getElementsByTagName("tr");
+            let visibleCount = 0;
+            
+            for (let i = 0; i < trs.length; i++) {
+                const tds = trs[i].getElementsByTagName("td");
+                let match = false;
+                for (let j = 0; j < tds.length; j++) {
+                    if (tds[j].textContent.toLowerCase().includes(filter)) {
+                        match = true;
+                        break;
+                    }
+                }
+                if (match) {
+                    trs[i].style.display = "";
+                    visibleCount++;
+                } else {
+                    trs[i].style.display = "none";
+                }
+            }
+            
+            // Update match count stats
+            const stats = document.getElementById("stats-badge");
+            stats.textContent = `Showing ${visibleCount} of 22 Business Areas`;
+            
+            // Show no results message if none found
+            const noResults = document.getElementById("no-results-msg");
+            if (visibleCount === 0) {
+                noResults.style.display = "block";
+            } else {
+                noResults.style.display = "none";
+            }
+        }
+
+        let sortDirections = [true, true, true, true];
+        function sortTable(colIndex) {
+            const table = document.getElementById("summary-table");
+            const tbody = document.getElementById("table-body");
+            const rows = Array.from(tbody.querySelectorAll("tr"));
+            const descending = !sortDirections[colIndex];
+            
+            rows.sort((rowA, rowB) => {
+                const cellA = rowA.getElementsByTagName("td")[colIndex].textContent.trim();
+                const cellB = rowB.getElementsByTagName("td")[colIndex].textContent.trim();
+                return cellA.localeCompare(cellB) * (descending ? -1 : 1);
+            });
+            
+            // Clear existing rows
+            while (tbody.firstChild) {
+                tbody.removeChild(tbody.firstChild);
+            }
+            
+            // Append sorted rows
+            rows.forEach(row => tbody.appendChild(row));
+            
+            // Toggle directions
+            sortDirections[colIndex] = !sortDirections[colIndex];
+        }
+    </script>
+</body>
+</html>

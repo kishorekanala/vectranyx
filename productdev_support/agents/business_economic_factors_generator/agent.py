@@ -19,12 +19,12 @@ def read_from_file(filename: str) -> str:
     with open(filename, 'r') as f:
         return f.read()
 
-def register_business_area(component_area: str, sector: str, macro_factors: str, micro_factors: str, filename: str = DEFAULT_REGISTRY_FILE, page_title: str = "B2B Component Vector Registry", page_subtitle: str = "Dynamic indexing of core components, sectors, systemic macroeconomic variables, and operational microeconomic risks.") -> str:
+def register_business_area(business_area: str, sector: str, macro_factors: str, micro_factors: str, filename: str = DEFAULT_REGISTRY_FILE, page_title: str = "B2B Business Area Vector Registry", page_subtitle: str = "Dynamic indexing of B2B business areas, sectors, systemic macroeconomic variables, and operational microeconomic risks.") -> str:
     """
     Saves or appends the extracted B2B vector information as a row in the central HTML registry.
     
     Args:
-        component_area (str): The name/specification of the business component area.
+        business_area (str): The name/specification of the B2B business area.
         sector (str): The primary industry sector.
         macro_factors (str): Systemic macroeconomic factors impacting the sector.
         micro_factors (str): Entity-specific microeconomic/operational factors impacting the business.
@@ -40,7 +40,7 @@ def register_business_area(component_area: str, sector: str, macro_factors: str,
     
     # Format the new HTML row with clean, structured elements
     new_row = f"""                    <tr>
-                        <td style="font-weight: 500; color: var(--text-primary);">{component_area.strip()}</td>
+                        <td style="font-weight: 500; color: var(--text-primary);">{business_area.strip()}</td>
                         <td style="color: var(--accent-cyan); font-weight: 500;">{sector.strip()}</td>
                         <td>{macro_factors.strip()}</td>
                         <td>{micro_factors.strip()}</td>
@@ -173,7 +173,7 @@ def register_business_area(component_area: str, sector: str, macro_factors: str,
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 25%;">Component Area</th>
+                        <th style="width: 25%;">Business Area</th>
                         <th style="width: 20%;">Industry Sector</th>
                         <th style="width: 27%;">Macroeconomic Factors (Systemic)</th>
                         <th style="width: 28%;">Microeconomic Factors (Entity-Specific)</th>
@@ -197,7 +197,7 @@ def register_business_area(component_area: str, sector: str, macro_factors: str,
             return f"Error creating registry HTML: {str(e)}"
     else:
         # File exists: safely locate <tbody id="registry-body"> or </tbody> and append the row
-        print(f"\n[AGENT WORK] Append Request -> File: '{filename}' (Appending component area: '{component_area}')", flush=True)
+        print(f"\n[AGENT WORK] Append Request -> File: '{filename}' (Appending business area: '{business_area}')", flush=True)
         print(f"[AGENT WORK] Reading registry file to locate table body...", flush=True)
         try:
             with open(filepath, "r", encoding="utf-8") as f:
@@ -214,7 +214,7 @@ def register_business_area(component_area: str, sector: str, macro_factors: str,
             new_content = content[:tbody_idx] + new_row + "\n" + content[tbody_idx:]
             with open(filepath, "w", encoding="utf-8") as f:
                 f.write(new_content)
-            print(f"[AGENT WORK] Append Success -> Successfully appended factor vectors for '{component_area}' into {filename}.\n", flush=True)
+            print(f"[AGENT WORK] Append Success -> Successfully appended factor vectors for '{business_area}' into {filename}.\n", flush=True)
             return f"Success: Safely appended the extracted factor vectors into {filepath}"
         except Exception as e:
             print(f"[AGENT WORK] Append Error -> Failed to write to {filepath}: {str(e)}", flush=True)
@@ -238,7 +238,7 @@ root_agent = Agent(
        
     2. **Synthesize Factor Vectors for Each Identified Area**:
        For each identified business area, extract or synthesize the four critical factor vectors:
-       - **Component Area**: The specific physical component system, machinery, or sub-assembly targeted. Identify component area as granular as possible.
+       - **Business Area**: The specific B2B business area, machinery, or sub-assembly targeted. Identify business area as granular as possible.
        - **Industry Sector**: The parent macro sector category.
        - **Macroeconomic Factors (Systemic)**: Core global economic variables, sovereign mandates, capital subsidies, tariff structures, or global raw material shortages.
        - **Microeconomic Factors (Entity-Specific)**: Local physical wear, specialized engineer talent shortages, extreme cleanroom standard maintenance costs, or high R&D obsolescence risks.
@@ -253,7 +253,7 @@ root_agent = Agent(
     4. **Generate Executive Report**:
        Provide a clean, comprehensive, premium HTML report to the user:
        - An introductory section explaining the strategic context of the identified business areas.
-       - A beautifully structured table detailing each identified segment with its Sector, Component, Macro, and Micro vectors.
+       - A beautifully structured table detailing each identified segment with its Sector, Business Area, Macro, and Micro vectors.
        - A formal confirmation explicitly naming the dynamic output file generated (e.g., 'Registered inside the semiconductor_registry.html database').
     """,
     tools=[

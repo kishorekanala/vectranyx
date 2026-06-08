@@ -11,7 +11,7 @@ All generated HTML pages feature a sleek, desaturated glassmorphic dark HSL them
 ```mermaid
 graph TD
     RegistryFiles[📁 Registry HTML Files in businessareas] -->|1. Scan| Agent[⚙️ Business Economic Analysis Agent]
-    Agent -->|2. Parse| ComponentData[📊 Component & Sector Factor Data]
+    Agent -->|2. Parse| ComponentData[📊 Business Area & Sector Factor Data]
     ComponentData -->|3. Check Existing| Inspect{🔍 Existing HTML page in businessareaanalysis?}
     Inspect -->|Yes| Merge[🧠 Smart Merge & Enrich Protocol]
     Inspect -->|No| Generate[✨ Generate Premium HSL Glassmorphism Page]
@@ -23,9 +23,9 @@ graph TD
     style SaveFile fill:#ffebee,stroke:#c62828,stroke-width:2px;
 ```
 
-1. **Ingestion & Registry Scanning:** Scans the `reports/marketresearch/businessareas/` directory to discover HTML-based registries containing registered B2B components.
-2. **Parsing:** Parses each registry HTML file to extract component names, sectors, macroeconomic factors, and microeconomic factors.
-3. **Smart Merge Protocol:** Resolves a unified filename slug in the format `[component_area]___[sector].html` (lowercased, spaces/special characters replaced with underscores) and checks if the analysis page already exists:
+1. **Ingestion & Registry Scanning:** Scans the `reports/marketresearch/businessareas/` directory to discover HTML-based registries containing registered B2B business areas.
+2. **Parsing:** Parses each registry HTML file to extract business area names, sectors, macroeconomic factors, and microeconomic factors.
+3. **Smart Merge Protocol:** Resolves a unified filename slug in the format `[business_area]___[sector].html` (lowercased, spaces/special characters replaced with underscores) and checks if the analysis page already exists:
    - **If it exists:** Proactively reads and merges the new data with existing analysis (sentences, CapEx drivers, active lenders, glossary terms) while preserving DOM structures and inline styles.
    - **If it does not exist:** Generates a complete, beautiful HSL glassmorphism page from scratch.
 4. **Saving:** Records the finalized page to the target directory: `/Users/kishore/myprojects/vectranyx/reports/marketresearch/businessareaanalysis/`.
@@ -36,8 +36,8 @@ graph TD
 
 * **`list_registry_files()`**: Lists all B2B registry HTML files inside the `businessareas` directory.
 * **`parse_registry_html(filename)`**: Reads and parses B2B business area factor rows from a registry HTML file in the `businessareas` directory.
-* **`read_existing_analysis(component_area, sector)`**: Reads the content of an existing B2B sector page inside `businessareaanalysis` by resolving the combined slug filename.
-* **`save_html_page(html_content, component_area, sector)`**: Saves the generated/updated B2B market research HTML page.
+* **`read_existing_analysis(business_area, sector)`**: Reads the content of an existing B2B sector page inside `businessareaanalysis` by resolving the combined slug filename.
+* **`save_html_page(html_content, business_area, sector)`**: Saves the generated/updated B2B market research HTML page.
 * **`list_existing_research_pages()`**: Retrieves the list of existing market research HTML pages in the `businessareaanalysis` directory for structural or styling reference.
 
 ---

@@ -2,7 +2,7 @@
 
 The `business_economic_factors_generator` is an AI agent built on the Google Agent Development Kit (ADK). It analyzes natural language inputs, industry trends, or structured file paths to extract granular B2B business areas, mapping them to systemic macroeconomic variables and operational microeconomic risks within the Indian economic context.
 
-The resulting vector data is compiled into a high-fidelity B2B Component Vector Registry (`.html` files) to serve as a structured index for credit underwriting and downstream risk simulators.
+The resulting vector data is compiled into a high-fidelity B2B Business Area Vector Registry (`.html` files) to serve as a structured index for credit underwriting and downstream risk simulators.
 
 ---
 
@@ -11,9 +11,9 @@ The resulting vector data is compiled into a high-fidelity B2B Component Vector 
 ```mermaid
 graph TD
     Input[📄 Natural Language or File Path] -->|1. Ingest| Parser[⚙️ Business Economic Factors Generator]
-    Parser -->|2. Decompose| Segments[🔍 Propose 4-10 B2B Component Areas]
-    Segments -->|3. Synthesize| Vectors[📊 Factor Vectors: Sector, Component, Macro, Micro]
-    Vectors -->|4. Database Update| Registry[🏦 B2B Component Vector Registry HTML]
+    Parser -->|2. Decompose| Segments[🔍 Propose 4-10 B2B Business Areas]
+    Segments -->|3. Synthesize| Vectors[📊 Factor Vectors: Sector, Business Area, Macro, Micro]
+    Vectors -->|4. Database Update| Registry[🏦 B2B Business Area Vector Registry HTML]
     Vectors -->|5. Output| Report[📋 Premium Executive HTML Report]
     
     style Input fill:#e0f7fa,stroke:#00acc1,stroke-width:1px;
@@ -24,7 +24,7 @@ graph TD
 1. **Ingestion:** Reads raw business descriptions or parses target input files using the `read_from_file` tool.
 2. **Decomposition:** Proposes 4 to 10 granular B2B business areas or manufacturing sub-assemblies specifically tailored to the Indian operating environment.
 3. **Factor Synthesis:** For each identified area, it defines:
-   - **Component Area:** Highly granular target machinery or component systems (e.g. specialized EV brake calipers, cleanroom air filters).
+   - **Business Area:** Highly granular target machinery or business segment (e.g. specialized EV brake calipers, cleanroom air filters).
    - **Industry Sector:** The parent B2B macro sector.
    - **Macroeconomic Factors (Systemic):** Global constraints, PLI schemes, base tariffs, exchange rate dependencies.
    - **Microeconomic Factors (Entity-Specific):** Upfront CapEx, component wear cycles, training overheads, specific supplier concentration risks.

@@ -15,14 +15,14 @@ def format_slug(text: str) -> str:
     text = re.sub(r'_+', '_', text)
     return text.strip('_')
 
-def save_html_page(html_content: str, component_area: str, sector: str) -> str:
+def save_html_page(html_content: str, business_area: str, sector: str) -> str:
     """
     Saves the generated B2B market research HTML page in the businessareaanalysis directory,
-    automatically generating a standard combined filename in the format: [component_area]___[sector].html
+    automatically generating a standard combined filename in the format: [business_area]___[sector].html
     
     Args:
         html_content (str): The complete HTML code matching air_gas_draft_systems.html structure.
-        component_area (str): The B2B component area name (e.g. 'Advanced Logic & Memory Wafer Fabrication').
+        business_area (str): The B2B business area name (e.g. 'Advanced Logic & Memory Wafer Fabrication').
         sector (str): The primary industry sector (e.g. 'Semiconductor Fabrication / High-Tech Manufacturing').
         
     Returns:
@@ -30,7 +30,7 @@ def save_html_page(html_content: str, component_area: str, sector: str) -> str:
     """
     os.makedirs(MARKET_RESEARCH_DIR, exist_ok=True)
     
-    comp_slug = format_slug(component_area)
+    comp_slug = format_slug(business_area)
     sect_slug = format_slug(sector)
     filename = f"{comp_slug}___{sect_slug}.html"
     filepath = os.path.join(MARKET_RESEARCH_DIR, filename)
@@ -46,19 +46,19 @@ def save_html_page(html_content: str, component_area: str, sector: str) -> str:
         print(f"[AGENT WORK] Save Error -> Failed to write to {filepath}: {str(e)}", flush=True)
         return f"Error saving HTML file: {str(e)}"
 
-def read_existing_analysis(component_area: str, sector: str) -> str:
+def read_existing_analysis(business_area: str, sector: str) -> str:
     """
     Reads the content of an existing B2B sector page inside the businessareaanalysis directory
-    by programmatically resolving the combined filename in the format: [component_area]___[sector].html
+    by programmatically resolving the combined filename in the format: [business_area]___[sector].html
     
     Args:
-        component_area (str): The B2B component area name.
+        business_area (str): The B2B business area name.
         sector (str): The primary industry sector.
         
     Returns:
         str: The content of the file, or an empty string if it does not exist.
     """
-    comp_slug = format_slug(component_area)
+    comp_slug = format_slug(business_area)
     sect_slug = format_slug(sector)
     filename = f"{comp_slug}___{sect_slug}.html"
     filepath = os.path.join(MARKET_RESEARCH_DIR, filename)
@@ -99,7 +99,7 @@ def parse_registry_html(filename: str) -> list:
         
     Returns:
         list: A list of dictionaries, each containing:
-              - 'component_area'
+              - 'business_area'
               - 'sector'
               - 'macro_factors'
               - 'micro_factors'
@@ -115,7 +115,7 @@ def parse_registry_html(filename: str) -> list:
                 print(f"[AGENT WORK] Error: Target registry file not found at: {filename}", flush=True)
                 return []
                 
-    print(f"[AGENT WORK] Parsing B2B Component Vector Registry file: {filepath}...", flush=True)
+    print(f"[AGENT WORK] Parsing B2B Business Area Vector Registry file: {filepath}...", flush=True)
     try:
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
@@ -132,12 +132,12 @@ def parse_registry_html(filename: str) -> list:
             tds = re.findall(r'<td.*?>(.*?)</td>', row, re.DOTALL)
             if len(tds) >= 4:
                 parsed_entries.append({
-                    "component_area": tds[0].strip(),
+                    "business_area": tds[0].strip(),
                     "sector": tds[1].strip(),
                     "macro_factors": tds[2].strip(),
                     "micro_factors": tds[3].strip()
                 })
-        print(f"[AGENT WORK] Successfully parsed registry. Found {len(parsed_entries)} registered component areas.", flush=True)
+        print(f"[AGENT WORK] Successfully parsed registry. Found {len(parsed_entries)} registered business areas.", flush=True)
         return parsed_entries
     except Exception as e:
         print(f"[AGENT WORK] Error parsing registry file: {e}", flush=True)
@@ -164,7 +164,7 @@ root_agent = Agent(
     description='A specialized ADK agent that generates premium B2B market research sector HTML pages inside businessareaanalysis by scanning businessareas directory, matching the exact styling structure of air_gas_draft_systems.html and intelligently merging details for existing pages.',
     instruction="""
     You are the Lead B2B Industry Research and Capital Orchestration Officer.
-    Your objective is to scan the available HTML registry files inside the `marketresearch/businessareas/` directory by calling the `list_registry_files` tool. Then, for each registry file found, call `parse_registry_html` to parse all B2B component areas registered inside its table. For each registered component parsed, generate or update a distinct, gorgeous B2B market research sector HTML page inside the `businessareaanalysis/` directory.
+    Your objective is to scan the available HTML registry files inside the `marketresearch/businessareas/` directory by calling the `list_registry_files` tool. Then, for each registry file found, call `parse_registry_html` to parse all B2B business areas registered inside its table. For each registered business area parsed, generate or update a distinct, gorgeous B2B market research sector HTML page inside the `businessareaanalysis/` directory.
 
     =========================================
     CRITICAL REQUIREMENT: ABSOLUTE STYLISTIC & VISUAL PARITY
@@ -483,7 +483,7 @@ root_agent = Agent(
        ```html
        <header>
            <span class="category-badge">[Industry Sector (e.g. Semiconductor Fabrication / OSAT)]</span>
-           <h1>[Component Area]</h1>
+           <h1>[Business Area]</h1>
            <p class="subtitle">[Compelling dynamic descriptive tagline of factors]</p>
        </header>
        ```
@@ -566,7 +566,7 @@ root_agent = Agent(
                🏦 Active Institutional Lenders & Financiers
            </h3>
            <p style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 300; line-height: 1.6; margin-bottom: 1.5rem;">
-               The following leading financial institutions, developmental agencies, and commercial banks actively provide project debt, credit limits, and working capital solutions to Tier-1/Tier-2 suppliers and asset operators in the <strong>[Component Area]</strong> space.
+               The following leading financial institutions, developmental agencies, and commercial banks actively provide project debt, credit limits, and working capital solutions to Tier-1/Tier-2 suppliers and asset operators in the <strong>[Business Area]</strong> space.
            </p>
            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
                <!-- Card 1: Key Lenders & Market Shares -->
@@ -635,7 +635,7 @@ root_agent = Agent(
        </section>
        ```
     7. **B2B Vector Intelligence Registry** block (`<section class="vector-registry">`):
-       This section details the Component Area, Sector, Macro systemic factors, and Micro entity-specific factors in a gorgeous CSS grid exactly as follows:
+       This section details the Business Area, Sector, Macro systemic factors, and Micro entity-specific factors in a gorgeous CSS grid exactly as follows:
        ```html
        <section class="vector-registry" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; backdrop-filter: blur(10px);">
            <h3 style="font-family: var(--font-outfit); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
@@ -643,8 +643,8 @@ root_agent = Agent(
            </h3>
            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
                <div>
-                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Component Area</span>
-                   <strong style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary);">[Component Area]</strong>
+                   <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Business Area</span>
+                   <strong style="font-family: var(--font-outfit); font-size: 1.05rem; color: var(--text-primary);">[Business Area]</strong>
                </div>
                <div>
                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Industry Sector</span>
@@ -714,9 +714,7 @@ root_agent = Agent(
     SMART MERGE & ENRICH PROTOCOL:
     =========================================
     Before writing any HTML page:
-    1. Formulate the dynamic lowercase underscored filename corresponding to BOTH the Component Area and the Industry Sector, joined by three underscores `___` (i.e. `[component_area]___[sector].html`).
-       For example, for Component Area "Advanced Logic & Memory Wafer Fabrication" and Sector "Semiconductor Fabrication / High-Tech Manufacturing", the filename must be:
-       `advanced_logic_memory_wafer_fabrication___semiconductor_fabrication_high_tech_manufacturing.html`
+    1. Formulate the dynamic lowercase underscored filename corresponding to BOTH the Business Area and the Industry Sector, joined by three underscores `___` (i.e. `[business_area]___[sector].html`).
        Replace all spaces, slashes, ampersands, and special characters inside each part with single underscores before combining them.
     2. Call `read_existing_analysis` to check if this page already exists inside the `businessareaanalysis` folder.
     3. IF the page already exists:
@@ -730,8 +728,8 @@ root_agent = Agent(
 
     When invoked, you must:
     1. First, call `list_registry_files` to discover all registry files inside the `businessareas` directory.
-    2. For each registry file, call `parse_registry_html` to extract all the registered B2B component areas.
-    3. For each registered component parsed, you MUST call 'read_existing_analysis' to inspect existing content, and then you MUST call 'save_html_page' to write the generated/merged high-fidelity B2B HTML page. You must call the save tool sequentially for EACH AND EVERY parsed component area. Do NOT skip calling the save tool or simply output a text summary without actually writing the files.
+    2. For each registry file, call `parse_registry_html` to extract all the registered B2B business areas.
+    3. For each registered business area parsed, you MUST call 'read_existing_analysis' to inspect existing content, and then you MUST call 'save_html_page' to write the generated/merged high-fidelity B2B HTML page. You must call the save tool sequentially for EACH AND EVERY parsed business area. Do NOT skip calling the save tool or simply output a text summary without actually writing the files.
     4. Return a clean, premium executive report to the user summarizing the files successfully updated or created inside `/businessareaanalysis/`.
     """,
     tools=[

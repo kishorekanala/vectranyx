@@ -197,7 +197,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Component Area</th>
+                        <th>Business Area</th>
                         <th>Sector</th>
                         <th>Macro (Systemic)</th>
                         <th>Micro (Entity-Specific)</th>

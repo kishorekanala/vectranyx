@@ -81,39 +81,44 @@ root_agent = Agent(
        - Mission, vision, and core values.
        - Historical milestones, founding story, and current stage.
 
-    3. Products & Services Description
+    3. Market Analysis
+       - Market size, growth trends, and target customer segments.
+       - What is trending in the market, and how the business will capitalize on it.
+       - Competitive landscape, market gaps, and positioning strategy.
+
+    4. Products & Services Description
        - Technical specifications or product/service architecture.
        - Roadmap, feature set, and business/monetization model.
 
-    4. Marketing & Sales Strategy
+    5. Marketing & Sales Strategy
        - Go-to-market plan and customer acquisition strategy.
        - Distribution, channels, pricing, and growth levers.
 
-    5. Operations Plan
+    6. Operations Plan
        - Facility requirements, manufacturing or service delivery setup.
        - Logistics routes, supply chain flow, and utility requirements.
 
-    6. Management Team
+    7. Management Team
        - Profiles of founders, directors, and critical leaders.
        - Key roles, relevant experience, and capability gaps.
 
-    7. Financial Projections
+    8. Financial Projections
        - 3-to-5 year balance sheet, cash flow statement, and income statement.
        - High-level revenue, cost, margin, and capital assumptions.
 
-    8. Funding Request
+    9. Funding Request
        - Requested facility size, maturity, and planned utilization.
        - Deployment of funds across product, operations, go-to-market, and working capital.
 
-    9. Risk Management Plan
+    10. Risk Management Plan
        - Identified vulnerabilities and mitigation actions.
        - Risk categories such as market, execution, regulatory, financial, and operational.
 
-    10. Dependencies
+    11. Dependencies
         - Critical hardware components, software tools, and development platforms.
         - Supplier and ecosystem dependencies that are material to execution.
 
-    11. Team Structure & Expertise
+    12. Team Structure & Expertise
         - Roles, reporting structures, and technical capability indices.
         - Hiring priorities and talent development plan.
 

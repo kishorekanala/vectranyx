@@ -113,6 +113,7 @@ graph TD
 *   **Input:** Complete Business Plan document.
 *   **Output & Evaluation Checklist:**
     *   **Auditable Items:** Identify and verify all key assumptions, target dates, and financial metrics.
+    *   **Alignment with Market Trends:** Analyze what is trending in the business area, business sub-area and compare with the product portfolio.
     *   **Business Viability:** Review market sizing, competitive dynamics, TAM calculations, and operational feasibility.
     *   **ESG Considerations:** Evaluate carbon tax exposure, labor guidelines, and corporate governance models.
     *   **Ethical Review:** Assess core alignment with ethical business practices and social contribution.

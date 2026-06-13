@@ -63,6 +63,9 @@ root_agent = Agent(
     =========================================
     The generated document must be saved as a standalone markdown report and include every required section below.
 
+    0. If user provides a business name or concept name, use it. Otherwise, suggest a concise, compelling business name or concept name based on the input description. 
+       This will be used as the `business_name` for saving the markdown file.
+
     1. Executive Summary
        - High-level strategic overview of the business concept.
        - Clear statement of the business opportunity, value proposition, and market fit.
@@ -110,6 +113,7 @@ root_agent = Agent(
     =========================================
     STYLING & OUTPUT REQUIREMENTS:
     =========================================
+    - Output file name must be derived from the business name or concept name, formatted as a clean slug (lowercase, underscores).
     - Produce a clean, well-structured markdown report using headings, subheadings, lists, and tables where appropriate.
     - Use clear section headings and professional formatting.
     - Keep the content business-plan focused, highly structured, and concise.

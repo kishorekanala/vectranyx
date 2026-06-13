@@ -64,3 +64,4 @@ Nexara
 Velitor
 Optifund
 VectorCapital
+VectorFinance

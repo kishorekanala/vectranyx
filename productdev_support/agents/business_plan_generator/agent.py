@@ -30,12 +30,14 @@ def read_input_file(filepath: str) -> str:
         return f"Error reading input file: {str(e)}"
 
 
-def save_business_plan(markdown_content: str, business_name: str) -> str:
+def save_business_plan(markdown_content: str, business_name: str, business_area: str = None, business_subarea: str = None) -> str:
     """Saves the generated business plan markdown file to the reports/businessplans directory."""
     os.makedirs(BUSINESS_PLAN_DIR, exist_ok=True)
 
-    slug = format_slug(business_name)
-    filename = f"{slug}_business_plan.md"
+    name_slug = format_slug(business_name)
+    area_slug = format_slug(business_area or "general")
+    subarea_slug = format_slug(business_subarea or "general")
+    filename = f"{name_slug}_{area_slug}_{subarea_slug}_business_plan.md"
     filepath = os.path.join(BUSINESS_PLAN_DIR, filename)
 
     print(f"\n[AGENT WORK] Save Request -> File: '{filename}'", flush=True)
@@ -63,8 +65,13 @@ root_agent = Agent(
     =========================================
     The generated document must be saved as a standalone markdown report and include every required section below.
 
-    0. If user provides a business name or concept name, use it. Otherwise, suggest a concise, compelling business name or concept name based on the input description. 
-       This will be used as the `business_name` for saving the markdown file.
+    0. User provides following as input
+        a) Business name [If user provides a business name or concept name, use it. Otherwise, suggest a concise, compelling business name or concept name based on the input description. 
+        This will be used as the `business_name` for saving the markdown file.
+        b) Business area [If user provides a business area or industry, use it to inform the content. Otherwise, infer a relevant business area from the input description.]
+        This will be used as the `business_area` for saving the markdown file.
+        c) Business sub area or niche [If user provides a specific sub-area or niche, use it to inform the content. Otherwise, infer a relevant sub-area or niche from the input description.]
+        This will be used as the `business_subarea` for saving the markdown file.
 
     1. Executive Summary
        - High-level strategic overview of the business concept.
@@ -113,7 +120,11 @@ root_agent = Agent(
     =========================================
     STYLING & OUTPUT REQUIREMENTS:
     =========================================
-    - Output file name must be derived from the business name or concept name, formatted as a clean slug (lowercase, underscores).
+    - Output file name must be derived from the following
+         - business_name, formatted as a clean slug (lowercase, underscores).
+         - business_area, formatted as a clean slug (lowercase, underscores).
+         - business_subarea, formatted as a clean slug (lowercase, underscores).
+    OUTPUT FILE NAME FORMAT: <business_name>_<business_area>_<business_subarea>_business_plan.md
     - Produce a clean, well-structured markdown report using headings, subheadings, lists, and tables where appropriate.
     - Use clear section headings and professional formatting.
     - Keep the content business-plan focused, highly structured, and concise.
@@ -124,7 +135,8 @@ root_agent = Agent(
     - If the user input points to a local file, call `read_input_file` first to ingest the content.
     - If the user provides natural language directly, use that content as the basis for the business plan.
     - Determine a strong short business name or concept name from the input and use it as the `business_name` for saving.
-    - After generating the full markdown business plan, call `save_business_plan(markdown_content, business_name)` to persist the file.
+    - Determine the `business_area` and `business_subarea` based on the input description.
+    - After generating the full markdown business plan, call `save_business_plan(markdown_content, business_name, business_area, business_subarea)` to persist the file.
     - Finally, return a short executive summary to the user confirming the exact saved file path.
     """,
     tools=[read_input_file, save_business_plan]

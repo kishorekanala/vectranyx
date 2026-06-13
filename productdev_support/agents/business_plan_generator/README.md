@@ -46,6 +46,7 @@ adk run business_plan_generator
 * Provide natural language input directly:
 
 ```text
+[user]: Provide business plan for Braking system manufacturing; Business name: ABC Business Area: Braking Systems; Business Sub-Area: Passenger Vehicles
 [user]: Create a business plan for a premium telematics subscription service for EV fleet operators in India.
 ```
 

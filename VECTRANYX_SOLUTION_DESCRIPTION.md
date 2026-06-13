@@ -102,6 +102,13 @@ graph TD
 
 The system utilizes specialized AI agents to orchestrate the evaluation workflow:
 
+```mermaid
+graph TD
+    System["Enterprise Credit and Risk Assessment System Orchestration Agent"]
+    System --> BPR["Business Plan Review Agent"]
+    System --> CRA["Credit Risk Assessment Agent"]
+```
+
 ### 4.1 Business Plan Review Agent
 *   **Input:** Complete Business Plan document.
 *   **Output & Evaluation Checklist:**

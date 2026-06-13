@@ -49,6 +49,7 @@ adk run business_plan_generator
 [user]: Provide business plan for Braking system manufacturing; Business name: ABC Business Area: Braking Systems; Business Sub-Area: Passenger Vehicles
 [user]: Create a business plan for a premium telematics subscription service for EV fleet operators in India.
 ```
+Note: When the agent is started with `adk run business_plan_generator`, it prints the sample prompt above to the console so you can copy/paste or edit it for the session.
 
 * Provide a local file path:
 

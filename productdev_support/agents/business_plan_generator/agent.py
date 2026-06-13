@@ -141,3 +141,11 @@ root_agent = Agent(
     """,
     tools=[read_input_file, save_business_plan]
 )
+
+# Show a sample user prompt immediately when the agent module is imported.
+# The ADK CLI imports this module when the agent starts, so this print will
+# surface the suggested example input to the user as soon as the agent is run.
+SAMPLE_PROMPT = "Provide business plan for Braking system manufacturing; Business name: ABC Business Area: Braking Systems; Business Sub-Area: Passenger Vehicles"
+
+print("\n[AGENT PROMPT] Sample input prompt for session:")
+print(SAMPLE_PROMPT, flush=True)

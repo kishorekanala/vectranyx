@@ -5,7 +5,7 @@ ECRA System is an automated, auditable decision intelligence platform for lendin
 The Enterprise Credit and Risk Assessment (ECRA) System ingests a company’s business profile and plan, synthesizes macro/micro risk vectors, and delivers an auditable, explainable credit and investment decision package with a weighted risk scoreboard, stress‑test simulations, and actionable early‑warning signals.
 
 ## Brief Summary
-The ECRA System converts business profiles and plans into instrument-grade, explainable evaluations by mapping sector/resource vectors, verifying key assumptions, and scoring geopolitical, supply‑chain, financial, pricing, and regulatory risks. Outputs include a weighted credit rating, supply‑chain resilience analysis, scenario stress tests (DSCR/ICR, liquidity runway), and a prioritized remediation plan to support fund/do‑not‑fund decisions for both lenders and investors, plus ongoing portfolio monitoring.
+The ECRA System converts business profiles and plans into instrument-grade, explainable evaluations by mapping sector/resource vectors, verifying key assumptions, and scoring geopolitical, supply‑chain, financial, pricing, and regulatory risks. Outputs include a weighted credit rating, supply‑chain resilience analysis, scenario stress tests (DSCR/ICR, liquidity runway), and a prioritized remediation plan to support fund/do‑not‑fund/fund with caution (phased funding based on milestones and conditions) decisions for both lenders and investors, plus ongoing portfolio monitoring and conditional tranche release guidance.
 
 
 ## Detailed Description

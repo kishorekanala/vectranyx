@@ -13,6 +13,7 @@ Validate the viability of a business, assess risk profile, and evaluate growth p
 
 ### A. Initial screening
 
+- Look up the "negative list" of industries maintained by Lenders and VCs/Angels and reject 
 - Business purpose
     - Problem clarity, solution relevance, value proposition (Problem–Solution–Benefit)
 - Problem being solved
@@ -26,6 +27,7 @@ Validate the viability of a business, assess risk profile, and evaluate growth p
     - Lifetime value (LTV) / Customer acquisition cost (CAC) ratio
     - Runway for startups
     - Profitability, liquidity, efficiency, and sustainability before new funding
+    - Uses DSCR (Debt Service Coverage Ratio)
 
 Provide an initial screening score with detailed reasoning:
 
@@ -44,6 +46,7 @@ Provide an initial screening score with detailed reasoning:
 
 - Business model & financials
     - Revenue model
+    - If pricing strategy (micro) isn't strong enough to cover your fixed costs and generate excess cash flow, your DSCR fails, and the loan dies here
     - Financial projections (realism check)
     - Breakeven analysis
     - Use of requested funds (alignment with targets/outcomes)

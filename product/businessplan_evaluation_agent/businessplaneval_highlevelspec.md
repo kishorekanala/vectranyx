@@ -1,67 +1,81 @@
-Business Plan Evaluation Agent
+# Business Plan Evaluation Agent
 
-Purpose:
+## Purpose
 
-   validate viability of business, check risk profile, growth potential of the proposed or on-going business
+Validate the viability of a business, assess risk profile, and evaluate growth potential for proposed or ongoing ventures.
 
-Target users:
-   - Lenders like banks, NBFCs
-   - Venture Capitalists or Angel investors
+## Target users
 
-Scope:
-    A. Initial screening to check 
-            - Business purpose [Problem clarity, Solution-relevance, Value proposition] : Problem-Solution-Benefit
-            - Problem being solved [problem severity, Status-quo comparison (why now? test)] : Problem auditor
-            - Unique value proposition 
-            - Core financials [Revenue vs sales drivers, Cash flow vs profitability, Expense scaling, Is gross margin (proposed) is according to industry benchmarks, Life-time-value/Customer Acquisition cost ratio above threshold, For startups, runway ]
-                Profitablity, Liquidity, Efficiency, How long business can sustain before new cash/funds
-                Financial Auditor Agent
-        Provide score for initial screening with detailed reasoning
-            - Each parameter will have score (Weightage of each factor is specified)
-            - Overall score is provided
-        Provide feedback (Go, No-Go) and recommendation
-            - Go, No-Go or Go with conditions or No-Go with possible rework
-    B. Comprehensive Evaluation
-        - Team
-        - Market opportunity
-            - Target customers
-            - Competitors strengths and weaknesses
-            - Proposed approach for capturing market share
-            - Entry barrier for others
+- Lenders (banks, NBFCs)
+- Venture capitalists and angel investors
 
-        - Business model & Financials 
-            - Revenue model
-            - Financial projections (Check if they are realistic)
-            - Breakeven analysis
-            - How requested funds will be utilized
-                (Do they align with proposed targets/outcomes)
+## Scope
 
-        - Market strategy
-            - Does Market strategy align with financial projections
+### A. Initial screening
 
-        - Operations & Risks
-            - Whether risks are identified and mitigation plan is included
-            - Feasibility of operations (day-to-day)
-            - Infrastructure planned
-               (Does operations plan support growth plans)
-            - Ability or plan to mitigate risks due to 
-                 - external economic factors (supply chain issues, economic policies, market shifts,...)
-                 - Political factors (?)
-                 - Business factors (competition entry, )
-            - Legal, compliance/regulatory, security risks
-        Provide score for initial screening with detailed reasoning
-            - Each parameter will have score (Weightage of each factor is specified)
-            - Overall score is provided
-        Provide feedback (Go, No-Go) and recommendation
-            - Go, No-Go or Go with conditions or No-Go with possible rework
-    C. Evaluation Report
-            - Report customised for target reviewers/evaluators
-                - Lenders (Banks, NBFCs) prioritize cash flow and ability to repay as per repayment plan
-                - Venture Capitalists prioritize scalability and exit strategy 
-                      They look for growth and entry barrier for others
-            - Cosmetic aspects
-                - Structure of business plan, appearance of material
-NOTE:
-   * Check all the details in business plans are backed by references, evidences
-   * Each of the factors/scores can be manually adjusted to check. All other factors/scores may need to updated accordingly.
-   * In all the above factors, macro economic and micro economic factors to be considered without fail [This is the key differentiator for the solution]
+- Business purpose
+    - Problem clarity, solution relevance, value proposition (Problem–Solution–Benefit)
+- Problem being solved
+    - Problem severity and status-quo comparison (why now?)
+- Unique value proposition
+- Core financials
+    - Revenue and sales drivers
+    - Cash flow vs profitability
+    - Expense scaling
+    - Gross margin vs industry benchmarks
+    - Lifetime value (LTV) / Customer acquisition cost (CAC) ratio
+    - Runway for startups
+    - Profitability, liquidity, efficiency, and sustainability before new funding
+
+Provide an initial screening score with detailed reasoning:
+
+- Each parameter will be scored (with specified weightages)
+- An overall score will be provided
+- Feedback: `Go`, `No-Go`, `Go with conditions`, or `No-Go with suggested rework`
+
+### B. Comprehensive evaluation
+
+- Team
+- Market opportunity
+    - Target customers
+    - Competitors: strengths and weaknesses
+    - Proposed approach for capturing market share
+    - Barriers to entry for competitors
+
+- Business model & financials
+    - Revenue model
+    - Financial projections (realism check)
+    - Breakeven analysis
+    - Use of requested funds (alignment with targets/outcomes)
+
+- Market strategy
+    - Alignment of market strategy with financial projections
+
+- Operations & risks
+    - Identification of risks and mitigation plans
+    - Operational feasibility (day-to-day)
+    - Planned infrastructure and scalability
+    - Mitigation plans for:
+        - External economic factors (supply chain, policy, market shifts)
+        - Political factors
+        - Business factors (competitive entry)
+    - Legal, compliance, and security risks
+
+Provide a comprehensive score with detailed reasoning:
+
+- Each parameter will be scored (with specified weightages)
+- An overall score will be provided
+- Feedback: `Go`, `No-Go`, `Go with conditions`, or `No-Go with suggested rework`
+
+### C. Evaluation report
+
+- Reports customized for the target reviewer(s):
+    - Lenders (banks, NBFCs): prioritize cash flow and ability to repay according to a repayment plan
+    - Venture capitalists: prioritize scalability, growth potential, and exit strategy
+- Cosmetic aspects: structure and presentation of the business plan materials
+
+## Notes
+
+- All claims and details in the business plan should be backed by references and evidence.
+- Scores and factor weightages should be adjustable; changing one factor must update dependent scores.
+- Macro and microeconomic factors must be considered in all evaluations (this is a key differentiator).

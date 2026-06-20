@@ -1,0 +1,156 @@
+{
+  "generated_from": "product/businessplan_evaluation_agent/ecra_development_risks.md",
+  "generated_date": "2026-06-14",
+  "checks": [
+    {
+      "id": "R-001",
+      "title": "Modular integration failures",
+      "category": "Technical Architecture",
+      "severity": "High",
+      "mitigation_summary": "Define interfaces, semantic versioning, automated integration tests and CI/CD.",
+      "acceptance_criteria": "All modules pass integration tests in CI; breaking changes require version bump and migration guide.",
+      "owners": null,
+      "evidence_required": ["Integration test report", "CI pipeline logs", "API contract docs"]
+    },
+    {
+      "id": "R-002",
+      "title": "Scalability bottlenecks for simulations",
+      "category": "Scalability",
+      "severity": "High",
+      "mitigation_summary": "Employ horizontal scaling, async pipelines, and scheduled offline simulations.",
+      "acceptance_criteria": "System sustains target throughput in load tests with acceptable latency and predictable cost.",
+      "owners": null,
+      "evidence_required": ["Load test results", "autoscaling config"]
+    },
+    {
+      "id": "R-003",
+      "title": "Poor or inconsistent input data",
+      "category": "Data Quality",
+      "severity": "High",
+      "mitigation_summary": "Enforce ingestion validators, required fields, and provenance capture.",
+      "acceptance_criteria": "Data validation failures < 1% for production ingest; provenance metadata present for each record.",
+      "owners": null,
+      "evidence_required": ["Validation reports", "provenance metadata"]
+    },
+    {
+      "id": "R-004",
+      "title": "External data provider outages or schema changes",
+      "category": "Data Availability",
+      "severity": "Medium",
+      "mitigation_summary": "Implement caching, multi-provider sourcing, and schema-change monitoring.",
+      "acceptance_criteria": "Graceful degradation path available; failover to cached/provider B demonstrated in tests.",
+      "owners": null,
+      "evidence_required": ["Failover test logs", "cache metrics"]
+    },
+    {
+      "id": "R-005",
+      "title": "Model errors or brittle audits",
+      "category": "Model Risk",
+      "severity": "High",
+      "mitigation_summary": "Model validation, holdout testing, adversarial checks, and human-in-loop for high-impact cases.",
+      "acceptance_criteria": "Models meet predefined performance thresholds on validation sets; human review enabled for top X% risk cases.",
+      "owners": null,
+      "evidence_required": ["Validation dataset results", "model-card docs"]
+    },
+    {
+      "id": "R-006",
+      "title": "Model drift",
+      "category": "Model Risk",
+      "severity": "Medium",
+      "mitigation_summary": "Continuous monitoring and retraining pipelines with drift detection.",
+      "acceptance_criteria": "Drift detection alerts trigger retraining process and SLA for remediation.",
+      "owners": null,
+      "evidence_required": ["Drift alerts", "retraining logs"]
+    },
+    {
+      "id": "R-007",
+      "title": "Insufficient explainability/audit trail",
+      "category": "Explainability",
+      "severity": "High",
+      "mitigation_summary": "Maintain immutable logs, feature-importance outputs, narrative rationales, and traceability to inputs.",
+      "acceptance_criteria": "Each decision includes an auditable trace linking inputs, model versions, feature attributions, and rationale.",
+      "owners": null,
+      "evidence_required": ["Audit logs", "explainability reports"]
+    },
+    {
+      "id": "R-008",
+      "title": "Jurisdictional regulatory non-compliance",
+      "category": "Regulatory",
+      "severity": "High",
+      "mitigation_summary": "Legal reviews, configurable thresholds by jurisdiction, and manual escalation workflows.",
+      "acceptance_criteria": "Legal sign-off for supported jurisdictions; configuration tested per jurisdiction.",
+      "owners": null,
+      "evidence_required": ["Legal memos", "jurisdictional config matrix"]
+    },
+    {
+      "id": "R-009",
+      "title": "Incorrect financial/stress-test calculations",
+      "category": "Financial Integrity",
+      "severity": "High",
+      "mitigation_summary": "Peer review of financial-engineering code, reconciliation against authoritative spreadsheets.",
+      "acceptance_criteria": "Automated reconciliation tests pass; independent sign-off recorded.",
+      "owners": null,
+      "evidence_required": ["Reconciliation reports", "peer review sign-off"]
+    },
+    {
+      "id": "R-010",
+      "title": "Security and data protection failures",
+      "category": "Security",
+      "severity": "Critical",
+      "mitigation_summary": "Encryption, RBAC, pen-tests, data-minimization, and DPIA.",
+      "acceptance_criteria": "No critical findings in pen-tests; compliance with applicable data protection laws.",
+      "owners": null,
+      "evidence_required": ["Pen-test reports", "DPIA"]
+    },
+    {
+      "id": "R-011",
+      "title": "Secrets management or insider exposure",
+      "category": "Security",
+      "severity": "High",
+      "mitigation_summary": "Use secrets vaults, key rotation, and least-privilege IAM.",
+      "acceptance_criteria": "Secrets stored in vault; rotation policy enforced and audited.",
+      "owners": null,
+      "evidence_required": ["Vault audit logs", "IAM policies"]
+    },
+    {
+      "id": "R-012",
+      "title": "Partner integration mismatches",
+      "category": "Integration",
+      "severity": "Medium",
+      "mitigation_summary": "Provide stable versioned APIs, adapters, and partner sandboxes.",
+      "acceptance_criteria": "Partner integration tests pass in sandbox; contract tests documented.",
+      "owners": null,
+      "evidence_required": ["Partner test logs", "API contracts"]
+    },
+    {
+      "id": "R-013",
+      "title": "Operational runbook and incident-response gaps",
+      "category": "Operations",
+      "severity": "High",
+      "mitigation_summary": "Define runbooks, SLOs, on-call, and incident drills.",
+      "acceptance_criteria": "Runbooks published; tabletop drills executed with postmortems.",
+      "owners": null,
+      "evidence_required": ["Runbooks", "postmortems"]
+    },
+    {
+      "id": "R-014",
+      "title": "Ethical and bias issues",
+      "category": "Ethics",
+      "severity": "Medium",
+      "mitigation_summary": "Bias testing, fairness constraints, and demographic impact assessment.",
+      "acceptance_criteria": "Bias assessments within tolerance; remediation implemented for identified issues.",
+      "owners": null,
+      "evidence_required": ["Bias reports", "mitigation plans"]
+    },
+    {
+      "id": "R-015",
+      "title": "Vendor lock-in and third-party dependence",
+      "category": "Third-party",
+      "severity": "Medium",
+      "mitigation_summary": "Multi-cloud strategy, contractual exit clauses, and alternative-provider tests.",
+      "acceptance_criteria": "Failover to an alternative provider demonstrated in test plan.",
+      "owners": null,
+      "evidence_required": ["Failover tests", "vendor contracts"]
+    }
+  ]
+}

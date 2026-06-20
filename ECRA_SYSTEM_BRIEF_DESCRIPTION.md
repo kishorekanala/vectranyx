@@ -7,6 +7,14 @@ The Enterprise Credit and Risk Assessment (ECRA) System ingests a company’s bu
 ## USP
 ECRA is the first explainable, tranche-ready credit and investment intelligence engine that turns business plans into auditable funding decisions and continuous portfolio controls.
 
+## How we plan to sell
+
+- “ECRA as a Service”: hosted, subscription, fast onboarding
+- “ECRA API”: embed explainable credit decision intelligence into existing systems
+- “ECRA Enterprise”: private deployment, white-label, and integration support
+- “ECRA Monitoring”: continuous post-disbursal monitoring and early-warning alerts as an ongoing service
+
+
 ## Brief Summary
 The ECRA System converts business profiles and plans into instrument-grade, explainable evaluations by mapping sector/resource vectors, verifying key assumptions, and scoring geopolitical, supply‑chain, financial, pricing, and regulatory risks. Outputs include a weighted credit rating, supply‑chain resilience analysis, scenario stress tests (DSCR/ICR, liquidity runway), and a prioritized remediation plan to support fund/do‑not‑fund/fund with caution (phased funding based on milestones and conditions) decisions for both lenders and investors, plus ongoing portfolio monitoring and conditional tranche release guidance.
 
@@ -37,4 +45,39 @@ pre-disbursement underwriting,
 explainable investment recommendation,
 and ongoing conditional monitoring.
 
+## Go-To-Market options for ECRA
 
+### Subscription-based service (SaaS)
+
+Hosted cloud platform accessible via browser and/or application
+
+Pricing:
+   Per-user/per-node subscription
+   Volume tiers by number of deals/reports analyzed
+   Add-ons for stress-testing, tranche monitoring or continuous monitoring
+
+### API/integration offering
+
+Provide ECRA as an embeddable service via REST/GraphQL APIs
+
+Target systems to all business plan evaluation service, risk score service, stress-test simulation, early-warning alerts
+
+Target users
+    Bank systems integrating these services
+    Treasury/risk platforms embedding credit health signals
+    investor dealflow systems automating credit-risk check/monitoring workflows
+
+Pricing:
+    API transaction based (API invocation based)
+         Monthly minimum + per API call or per report charges
+
+### License ECRA
+    License ECRA to target users/institutions
+    They can embed in their own systems
+
+    License fee + support/maintenance charges
+
+#### On-prem or private cloud deployment
+
+     License fee and support/maintenance
+     These will be helpful to maintain confidentiality of data

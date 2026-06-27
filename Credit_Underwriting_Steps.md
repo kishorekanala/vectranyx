@@ -3,7 +3,10 @@
 ## Input
 - Business Plan
 
-## Activities
+## Workflow
+
+### 1. Pre-screening & KYC (Quick Kill)
+Bank pulls founder's personal and business credit reports (like CIBIL) to check for past defaults. They also check if business falls onto the bank’s "negative list" (highly volatile industries they refuse to finance). If you fail here, the application is rejected within 48 hours.
 
 ### 1. Feasibility Study
 

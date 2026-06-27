@@ -62,10 +62,10 @@ Provide ECRA as an embeddable service via REST/GraphQL APIs
 
 Target systems to all business plan evaluation service, risk score service, stress-test simulation, early-warning alerts
 
-Target users
-    Bank systems integrating these services
-    Treasury/risk platforms embedding credit health signals
-    investor dealflow systems automating credit-risk check/monitoring workflows
+Target users [order of priority based on market value]
+    1. Bank systems integrating these services
+    2. Treasury/risk platforms embedding credit health signals
+    3. investor dealflow systems automating credit-risk check/monitoring workflows
 
 Pricing:
     API transaction based (API invocation based)
